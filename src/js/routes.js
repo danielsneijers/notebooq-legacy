@@ -1,10 +1,10 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 import AppContainer from 'containers/AppContainer'
-import MarkdownViewContainer from 'containers/MarkdownViewContainer'
+import NoteContainer from 'containers/NoteContainer'
 
 export default (
   <Route path="/" component={AppContainer}>
-    <IndexRoute component={MarkdownViewContainer} />
+    <IndexRoute component={NoteContainer} />
   </Route>
 )

@@ -5,7 +5,7 @@ import Input from 'components/Input'
 
 function mapStateToProps (state) {
   return {
-    title: state.title
+    title: state.input.title
   }
 }
 

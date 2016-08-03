@@ -1,14 +1,14 @@
 import React from 'react'
 import InputContainer from 'containers/InputContainer'
 
-import CSS from './MarkdownView.css'
+import CSS from './Note.css'
 
 const MarkdownView = (props) => {
   return (
-    <div>
+    <div className={CSS.Note}>
       <InputContainer />
       <textarea
-        className={CSS.textarea}
+        className={CSS.Textarea}
       />
     </div>
   )

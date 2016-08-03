@@ -1,6 +1,15 @@
 import React, { PropTypes } from 'react'
 
-const Input = ({ title, saveTitle }) => (<input value={title} onChange={saveTitle} />)
+import CSS from './Input.css'
+
+const Input = ({ title, saveTitle }) => {
+  return <input
+    name="Title"
+    defaultValue={title}
+    placeholder="Untitled note..."
+    className={CSS.Input}
+    onChange={saveTitle} />
+}
 
 Input.propTypes = {
   title: PropTypes.string,

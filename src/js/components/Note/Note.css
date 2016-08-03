@@ -1,0 +1,19 @@
+.Note {
+  position: relative;
+  width: 100%;
+  max-width: 40rem;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+.Textarea {
+  border: none;
+  position: relative;;
+  overflow: hidden;
+  outline: none;
+  box-shadow: none;
+  width: 100%;
+  height: auto;
+  min-height: calc(100vh - 5rem);
+}

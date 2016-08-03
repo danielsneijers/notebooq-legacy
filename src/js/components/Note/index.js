@@ -3,7 +3,7 @@ import InputContainer from 'containers/InputContainer'
 
 import CSS from './Note.css'
 
-const MarkdownView = (props) => {
+const Note = (props) => {
   return (
     <div className={CSS.Note}>
       <InputContainer />
@@ -14,4 +14,4 @@ const MarkdownView = (props) => {
   )
 }
 
-export default MarkdownView
+export default Note

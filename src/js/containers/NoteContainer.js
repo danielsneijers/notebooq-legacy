@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import Note from 'components/Note'
 
-function mapStateToProps (state) {
+export function mapStateToProps (state) {
   return {}
 }
 

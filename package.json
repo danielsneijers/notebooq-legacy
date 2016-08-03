@@ -5,8 +5,9 @@
   "main": "main.js",
   "scripts": {
     "start": "ENV=development concurrently -k 'babel-node server.js' 'electron .'",
-    "test": "istanbul cover --colors --report=text --report=lcov -x 'src/**/*.test.js'  _mocha -- --compilers js:babel-core/register --recursive 'src/**/*.test.js'",
-    "test:watch": "mocha 'src/js/**/*.test.js' --recursive --harmony_proxies --require './config/testSetup.js' --watch"
+    "test": "ENV=test NODE_PATH='src/js' istanbul cover --colors  _mocha -- --require './config/testSetup.js' --compilers js:babel-register --recursive 'src/**/*.test.js'",
+    "test:watch": "ENV=test NODE_PATH='src/js' mocha 'src/js/**/*.test.js' --recursive --harmony_proxies --require './config/testSetup.js' --watch",
+    "plato": "plato -r -d report src"
   },
   "keywords": [],
   "author": "Daniel Sneijers",
@@ -23,7 +24,6 @@
     "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
-    "app-module-path": "^1.1.0",
     "babel-cli": "^6.11.4",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
@@ -37,6 +37,7 @@
     "css-loader": "^0.23.1",
     "deep-freeze": "0.0.1",
     "electron-prebuilt": "^1.2.7",
+    "enzyme": "^2.4.1",
     "eslint": "^3.2.0",
     "eslint-config-standard": "^5.3.5",
     "eslint-config-standard-react": "^3.0.0",
@@ -50,7 +51,9 @@
     "mocha": "^3.0.0",
     "plato": "^1.6.0",
     "postcss-loader": "^0.9.1",
+    "react-addons-test-utils": "^15.3.0",
     "redux-logger": "^2.6.1",
+    "redux-mock-store": "^1.1.2",
     "sinon": "^1.17.5",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",

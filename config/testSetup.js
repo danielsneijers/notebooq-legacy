@@ -1,35 +1,35 @@
 // require('babel-polyfill')
-const path = require('path')
-const SOURCE_PATH = path.resolve('../src/js')
+// const path = require('path')
+// const SOURCE_PATH = path.resolve('../src/js')
 
-// function mockCSSModule (module, path) {
-//   // old style Proxy, enabled with the --harmony_proxies flag
-//   // https://developer.mozilla.org/en-US/docs/Archive/Web/Old_Proxy_API
-//   // returns the asked property name, so we can test classNames from the CSS Module
-//   if (Proxy.create) {
-//     const cssModuleProxy = Proxy.create({
-//       getOwnPropertyDescriptor: () => undefined,
-//       has: () => true,
-//       get: (target, name) => name
-//     })
-//
-//     module.exports = Object.create(cssModuleProxy)
-//     return
-//   }
-//
-//   // new style Proxy, since node 6
-//   module.exports = new Proxy({}, {
-//     has: () => true,
-//     get: (target, name) => name
-//   })
-// }
+function mockCSSModule (module, path) {
+  // old style Proxy, enabled with the --harmony_proxies flag
+  // https://developer.mozilla.org/en-US/docs/Archive/Web/Old_Proxy_API
+  // returns the asked property name, so we can test classNames from the CSS Module
+  if (Proxy.create) {
+    const cssModuleProxy = Proxy.create({
+      getOwnPropertyDescriptor: () => undefined,
+      has: () => true,
+      get: (target, name) => name
+    })
+
+    module.exports = Object.create(cssModuleProxy)
+    return
+  }
+
+  // new style Proxy, since node 6
+  module.exports = new Proxy({}, {
+    has: () => true,
+    get: (target, name) => name
+  })
+}
 
 function enhanceRequire () {
   // make sure `components/MyComponent` will be resolved
-  require('app-module-path').addPath(SOURCE_PATH)
+  // require('app-module-path').addPath(SOURCE_PATH)
 
   // mock CSS response, since we're doing node-based testing this is OK
-  // require.extensions['.css'] = mockCSSModule
+  require.extensions['.css'] = mockCSSModule
 
   // parse all JS files with Babel
   require('babel-register')({

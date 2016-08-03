@@ -3,13 +3,13 @@ import { connect } from 'react-redux'
 import * as InputActions from 'actions/input'
 import Input from 'components/Input'
 
-function mapStateToProps (state) {
+export function mapStateToProps (state) {
   return {
     title: state.input.title
   }
 }
 
-function mapDispatchToProps (dispatch) {
+export function mapDispatchToProps (dispatch) {
   return bindActionCreators(InputActions, dispatch)
 }
 

@@ -5,9 +5,9 @@
   "main": "main.js",
   "scripts": {
     "start": "ENV=development concurrently -k 'babel-node server.js' 'electron .'",
-    "test": "ENV=test NODE_PATH='src/js' istanbul cover --colors  _mocha -- --require './config/testSetup.js' --compilers js:babel-register --recursive 'src/**/*.test.js'",
+    "test": "ENV=test NODE_PATH='src/js' istanbul cover --colors  _mocha -- --require './config/testSetup.js' --compilers js:babel-register --recursive 'src/**/*.test.js' && npm run plato",
     "test:watch": "ENV=test NODE_PATH='src/js' mocha 'src/js/**/*.test.js' --recursive --harmony_proxies --require './config/testSetup.js' --watch",
-    "plato": "plato -r -d report src"
+    "plato": "plato -r -e '.eslintrc' -x '\\.test\\.js$' -d report src"
   },
   "keywords": [],
   "author": "Daniel Sneijers",
@@ -49,7 +49,7 @@
     "istanbul": "^1.0.0-alpha",
     "jsdom": "^9.4.1",
     "mocha": "^3.0.0",
-    "plato": "^1.6.0",
+    "plato": "git+https://git@github.com/typhonjs-node-escomplex/plato.git",
     "postcss-loader": "^0.9.1",
     "react-addons-test-utils": "^15.3.0",
     "redux-logger": "^2.6.1",

@@ -1,7 +1,7 @@
 {
   "parser": "babel-eslint",
   "ecmaFeatures": {
-    modules: true,
+    "modules": true
   },
   "env": {
     "browser": true,

@@ -19,10 +19,11 @@ describe('components > Input', () => {
   })
 
   it('renders a prefilled input when title prop is passed', () => {
-    const wrapper = shallow(<Input title={'New note'} saveTitle={saveTitle} />)
+    const title = 'New note'
+    const wrapper = shallow(<Input title={title} saveTitle={saveTitle} />)
 
-    expect(wrapper.prop('defaultValue')).to.equal('New note')
-    expect(wrapper.html()).to.equal('<input name="Title" placeholder="Untitled note..." value="New note"/>')
+    expect(wrapper.prop('defaultValue')).to.equal(title)
+    expect(wrapper.html()).to.equal(`<input name="Title" placeholder="Untitled note..." value="${title}"/>`)
   })
 
   it('saves the title when input value is changed', () => {

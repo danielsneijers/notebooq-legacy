@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux'
 import { routerReducer as routing } from 'react-router-redux'
-import input from './input'
-import noteBody from './noteBody'
+import note from './note'
 
 const rootReducer = combineReducers({
-  input,
-  noteBody,
+  note,
   routing
 })
 

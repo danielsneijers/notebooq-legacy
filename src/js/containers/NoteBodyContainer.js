@@ -1,16 +1,16 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as NoteBodyActions from 'actions/noteBody'
+import * as NoteActions from 'actions/note'
 import NoteBody from 'components/NoteBody'
 
 export function mapStateToProps (state) {
   return {
-    copy: state.noteBody.copy
+    copy: state.note.copy
   }
 }
 
 export function mapDispatchToProps (dispatch) {
-  return bindActionCreators(NoteBodyActions, dispatch)
+  return bindActionCreators(NoteActions, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NoteBody)

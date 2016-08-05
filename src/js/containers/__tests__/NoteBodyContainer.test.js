@@ -4,7 +4,7 @@ import { mapStateToProps, mapDispatchToProps } from '../NoteBodyContainer'
 const dispatch = () => {}
 const mockState = {
   someProperty: 'someValue',
-  noteBody: {
+  note: {
     copy: 'Some inspiring text, you should read it'
   }
 }

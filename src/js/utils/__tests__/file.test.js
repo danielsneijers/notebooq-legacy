@@ -6,11 +6,14 @@ import {
   getDirContents,
   getMostRecentModifiedFileFromArray,
   getMostRecentNote,
-  getTitleFromFilePath
+  getTitleFromFilePath,
+  renameFile,
+  getRenamedFilePath
 } from '../file'
 
 const fixturesDirPath = path.resolve('src/js/utils/__tests__/fixtures')
 const sampleNotePath = `${fixturesDirPath}/sampleNote.md`
+const fileContents = '# This sample note helps unit testing\n'
 
 describe('utils > file', () => {
   describe('isFile', () => {
@@ -22,9 +25,7 @@ describe('utils > file', () => {
 
   describe('getFileContents', () => {
     it('returns the contents of a file', () => {
-      const expectedResult = '# This sample note helps unit testing\n'
-
-      expect(getFileContents(sampleNotePath)).to.equal(expectedResult)
+      expect(getFileContents(sampleNotePath)).to.equal(fileContents)
     })
   })
 
@@ -55,6 +56,32 @@ describe('utils > file', () => {
       const expectedResult = 'sampleNote'
 
       expect(getTitleFromFilePath(sampleNotePath)).to.equal(expectedResult)
+    })
+  })
+
+  describe('renameFile', () => {
+    it('renames the file containing the current note', () => {
+      const oldName = 'sampleNote'
+      const newName = 'testNote'
+      const newNotePath = `${fixturesDirPath}/testNote.md`
+
+      renameFile(sampleNotePath, newName)
+
+      expect(getFileContents.bind(sampleNotePath)).to.throw(Error)
+      expect(getFileContents(newNotePath)).to.equal(fileContents)
+
+      renameFile(newNotePath, oldName)
+
+      expect(getFileContents.bind(newNotePath)).to.throw(Error)
+      expect(getFileContents(sampleNotePath)).to.equal(fileContents)
+    })
+  })
+
+  describe('getRenamedFilePath', () => {
+    it('returns the new path of a file after it\'s renamed', () => {
+      const expectedResult = `${fixturesDirPath}/testNote.md`
+
+      expect(getRenamedFilePath(sampleNotePath, 'testNote')).to.equal(expectedResult)
     })
   })
 })

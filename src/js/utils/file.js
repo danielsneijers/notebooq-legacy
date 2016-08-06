@@ -25,10 +25,20 @@ export function getMostRecentNote (dir) {
   const mostRecentFilePath = `${dir}/${mostRecentFile}`
 
   return isFile(mostRecentFilePath)
-    ? mostRecentFilePath
-    : /* istanbul ignore next */ getMostRecentNote(mostRecentFilePath)
+    ? mostRecentFilePath /* istanbul ignore next */
+    : getMostRecentNote(mostRecentFilePath)
 }
 
 export function getTitleFromFilePath (filePath) {
   return path.basename(filePath, '.md')
+}
+
+export function renameFile (filePath, newName) {
+  const newPath = getRenamedFilePath(filePath, newName)
+
+  return fs.renameSync(filePath, newPath)
+}
+
+export function getRenamedFilePath (filePath, newName) {
+  return filePath.replace(getTitleFromFilePath(filePath), newName)
 }

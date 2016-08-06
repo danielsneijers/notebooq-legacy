@@ -3,14 +3,14 @@ import { mapStateToProps } from '../NoteContainer'
 
 const mockState = {
   someProperty: 'someValue',
-  input: {
-    title: 'Nice title bro'
+  note: {
+    path: '/Users/danielsneijers/Dropbox/DevNotes/Personal/Test Note.md'
   }
 }
 
 describe('containers > NoteContainer', () => {
   it('adds the correct state to props', () => {
-    const expectedResult = {}
+    const expectedResult = { filePath: '/Users/danielsneijers/Dropbox/DevNotes/Personal/Test Note.md' }
 
     expect(mapStateToProps(mockState)).to.deep.equal(expectedResult)
   })

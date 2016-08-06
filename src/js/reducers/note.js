@@ -1,5 +1,5 @@
 import { SAVE_TITLE, SAVE_COPY } from 'constants/actionTypes'
-import { renameFile, getRenamedFilePath } from 'utils/file'
+import { renameFile, getRenamedFilePath, saveCopyToFile } from 'utils/file'
 
 export default function note (state = {}, action) {
   const { type, payload } = action
@@ -10,6 +10,7 @@ export default function note (state = {}, action) {
       return { ...state, title: payload, path: getRenamedFilePath(state.path, payload) }
 
     case SAVE_COPY:
+      saveCopyToFile(state.path, payload)
       return { ...state, copy: action.payload }
 
     default:

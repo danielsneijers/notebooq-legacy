@@ -39,6 +39,7 @@ describe('reducers > note', () => {
   it('returns an action object with the correct payload when saving copy', () => {
     const action = {
       type: 'SAVE_COPY',
+      path: sampleNotePath,
       payload: 'Some inspiring text, you should read it'
     }
     const expectedResult = {
@@ -46,9 +47,12 @@ describe('reducers > note', () => {
       copy: 'Some inspiring text, you should read it'
     }
 
+    stub(fileUtils, 'saveCopyToFile', () => null)
     deepFreeze(initialState)
 
     expect(note(initialState, action)).to.deep.equal(expectedResult)
+
+    fileUtils.saveCopyToFile.restore()
   })
 
   it('returns the current state when unknow actions is fired', () => {

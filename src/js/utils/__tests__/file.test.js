@@ -8,7 +8,8 @@ import {
   getMostRecentNote,
   getTitleFromFilePath,
   renameFile,
-  getRenamedFilePath
+  getRenamedFilePath,
+  saveCopyToFile
 } from '../file'
 
 const fixturesDirPath = path.resolve('src/js/utils/__tests__/fixtures')
@@ -60,7 +61,7 @@ describe('utils > file', () => {
   })
 
   describe('renameFile', () => {
-    it('renames the file containing the current note', () => {
+    it('renames the file containing the current note', (done) => {
       const oldName = 'sampleNote'
       const newName = 'testNote'
       const newNotePath = `${fixturesDirPath}/testNote.md`
@@ -74,6 +75,9 @@ describe('utils > file', () => {
 
       expect(getFileContents.bind(newNotePath)).to.throw(Error)
       expect(getFileContents(sampleNotePath)).to.equal(fileContents)
+
+      // Small timeout, tests sometimes go too fast for mocha to keep up
+      setTimeout(done, 20)
     })
   })
 
@@ -82,6 +86,18 @@ describe('utils > file', () => {
       const expectedResult = `${fixturesDirPath}/testNote.md`
 
       expect(getRenamedFilePath(sampleNotePath, 'testNote')).to.equal(expectedResult)
+    })
+  })
+
+  describe('saveCopyToFile', () => {
+    it('saves data to specified file', () => {
+      const newCopy = 'This new copy really grinds my gears, but at least it\'s saved correctly'
+
+      saveCopyToFile(sampleNotePath, newCopy)
+      expect(getFileContents(sampleNotePath)).to.equal(newCopy)
+
+      saveCopyToFile(sampleNotePath, fileContents)
+      expect(getFileContents(sampleNotePath)).to.equal(fileContents)
     })
   })
 })

@@ -1,5 +1,11 @@
-export const SAVE_TITLE = 'SAVE_TITLE'
-export const SAVE_COPY = 'SAVE_COPY'
+import { SET_FILE_PATH, SAVE_TITLE, SAVE_COPY } from 'constants/actionTypes'
+
+export function setFilePath (path) {
+  return {
+    type: SET_FILE_PATH,
+    payload: path
+  }
+}
 
 export function saveTitle (event) {
   return {

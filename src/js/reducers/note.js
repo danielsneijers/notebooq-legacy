@@ -1,6 +1,6 @@
 // import fs from 'fs'
 // import path from 'path'
-import { SAVE_TITLE, SAVE_COPY } from 'actions/note'
+import { SAVE_TITLE, SAVE_COPY } from 'constants/actionTypes'
 
 export default function note (state = {}, action) {
   const { type, payload } = action

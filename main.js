@@ -5,7 +5,7 @@ const { app, BrowserWindow } = electron
 let win
 
 function createWindow () {
-  win = new BrowserWindow({ width: 1200, height: 800 })
+  win = new BrowserWindow({ width: 1200, height: 800, titleBarStyle: 'hidden' })
 
   win.loadURL(`file://${__dirname}/src/index.html`)
   win.webContents.openDevTools()

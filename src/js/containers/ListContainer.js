@@ -4,12 +4,7 @@ import { connect } from 'react-redux'
 import List from 'components/List'
 
 export function mapStateToProps (state) {
-  return {
-    notes: [
-      {title: 'heyhoi', copy: 'dikke note ouwe'},
-      {title: 'nog een', copy: 'met meer nog meer copy'}
-    ]
-  }
+  return { list: state.list }
 }
 
 // export function mapDispatchToProps (dispatch) {

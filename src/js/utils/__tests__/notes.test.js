@@ -1,14 +1,28 @@
 import { expect } from 'chai'
 import path from 'path'
-import { getMostRecentNote } from '../notes'
+import { getMostRecentNote, getNotesTree } from '../notes'
 
 const fixturesDirPath = path.resolve('src/js/utils/__tests__/fixtures')
 const sampleNotePath = `${fixturesDirPath}/sampleNote.md`
 
 describe('utils > note', () => {
   describe('getMostRecentNote', () => {
-    it('returns the file last modified by the syste or user', () => {
+    it('returns the file last modified by the system or user', () => {
       expect(getMostRecentNote(fixturesDirPath)).to.equal(sampleNotePath)
     })
+  })
+
+  describe('getNotesTree', () => {
+    const expectedResult = {
+      Personal: [],
+      Work: [],
+      Default: [{
+        path: fixturesDirPath,
+        title: 'sampleNote',
+        copy: '# This sample note helps unit testing\n'
+      }]
+    }
+
+    expect(getNotesTree(fixturesDirPath)).to.deep.equal(expectedResult)
   })
 })

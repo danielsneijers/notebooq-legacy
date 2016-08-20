@@ -1,8 +1,13 @@
 import fs from 'fs'
 import path from 'path'
+import { getDirContents } from './dir'
 
-export function isFile (file) {
-  return fs.statSync(file).isFile()
+export function isFile (path) {
+  return fs.statSync(path).isFile()
+}
+
+export function getFilesFromFolder (dir) {
+  return getDirContents(dir).filter((item) => isFile(`${dir}/${item}`))
 }
 
 export function getFileContents (filePath) {

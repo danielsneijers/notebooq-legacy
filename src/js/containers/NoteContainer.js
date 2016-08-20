@@ -2,9 +2,7 @@ import { connect } from 'react-redux'
 import Note from 'components/Note'
 
 export function mapStateToProps (state) {
-  return {
-    filePath: state.note.path
-  }
+  return {}
 }
 
 export default connect(mapStateToProps)(Note)

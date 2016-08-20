@@ -11,13 +11,14 @@ import routes from './routes'
 import '../app.global.css'
 
 const initialNotePath = getMostRecentNote(NOTES_ROOT_FOLDER)
-const store = mainStore({
+const initialState = {
   note: {
     path: initialNotePath,
     title: getTitleFromFilePath(initialNotePath),
     copy: getFileContents(initialNotePath)
   }
-})
+}
+const store = mainStore(initialState)
 const history = syncHistoryWithStore(hashHistory, store)
 
 render(

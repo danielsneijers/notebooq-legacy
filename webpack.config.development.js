@@ -10,7 +10,6 @@ const config = {
   devtool: 'cheap-module-eval-source-map',
   module: {
     preLoaders: [
-      // Javascript
       { test: /\.js?$/, loader: 'eslint', exclude: /node_modules/ }
     ],
     loaders: [{
@@ -25,16 +24,23 @@ const config = {
       loaders: ['file-loader']
     }]
   },
+  postcss: () => {
+    return [
+      require('postcss-import'),
+      require('postcss-cssnext')({ browsers: 'last 3 Chrome versions' })
+    ]
+  },
   output: {
     path: path.resolve('./dist'),
     publicPath: 'http://localhost:9000/dist/',
     filename: 'bundle.js'
   },
   resolve: {
+    root: path.resolve(__dirname),
     extensions: ['', '.js', '.jsx'],
     modulesDirectories: [
       'node_modules',
-      path.resolve('./src/js')
+      'src/js'
     ]
   },
   plugins: [

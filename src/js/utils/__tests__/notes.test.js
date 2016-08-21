@@ -17,7 +17,7 @@ describe('utils > note', () => {
       Personal: [],
       Work: [],
       Default: [{
-        path: fixturesDirPath,
+        path: sampleNotePath,
         title: 'sampleNote',
         copy: '# This sample note helps unit testing\n'
       }]

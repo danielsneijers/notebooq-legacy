@@ -1,26 +1,22 @@
 import React, { PropTypes } from 'react'
-import ListFolder from 'components/ListFolder'
 import ListItem from 'components/ListItem'
 
 import CSS from './List.css'
 
-const List = ({ list }) => {
-  const folders = Object.keys(list)
-  const renderedRootFolderNotes = list.Default.map((note) => <ListItem key={note.title} note={note} />)
-  const renderedFolders = folders
-    .filter((folderName) => folderName !== 'Default')
-    .map((folderName) => <ListFolder key={folderName} folderName={folderName} notes={list[folderName]} />)
+const List = ({ children, notes }) => {
+  const renderedNotes = notes.map((note) => <ListItem key={note.title} note={note} />)
 
   return (
-    <div className={CSS.List}>
-      {renderedFolders}
-      {renderedRootFolderNotes}
-    </div>
+    <ul className={CSS.List}>
+      {children}
+      {renderedNotes}
+    </ul>
   )
 }
 
 List.propTypes = {
-  list: PropTypes.object.isRequired
+  children: PropTypes.node,
+  notes: PropTypes.array.isRequired
 }
 
 export default List

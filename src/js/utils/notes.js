@@ -38,7 +38,7 @@ export function getNotesTree (dir = NOTES_ROOT_FOLDER) {
 
 export function noteFromTemplate (currentPath, filePath) {
   return {
-    path: currentPath,
+    path: filePath,
     title: getTitleFromFilePath(filePath),
     copy: getFileContents(filePath)
   }

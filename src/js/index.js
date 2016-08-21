@@ -9,10 +9,10 @@ import { NOTES_ROOT_FOLDER } from 'constants/app'
 import routes from './routes'
 import '../app.global.css'
 
-const initialNotePath = getMostRecentNote(NOTES_ROOT_FOLDER)
+const activeNotePath = getMostRecentNote(NOTES_ROOT_FOLDER)
 const initialState = {
   list: getNotesTree(NOTES_ROOT_FOLDER),
-  note: noteFromTemplate(NOTES_ROOT_FOLDER, initialNotePath)
+  activeNote: noteFromTemplate(NOTES_ROOT_FOLDER, activeNotePath)
 }
 const store = mainStore(initialState)
 const history = syncHistoryWithStore(hashHistory, store)

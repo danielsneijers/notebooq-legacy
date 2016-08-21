@@ -4,7 +4,7 @@ import { mapStateToProps, mapDispatchToProps } from '../InputContainer'
 const dispatch = () => {}
 const mockState = {
   someProperty: 'someValue',
-  note: {
+  activeNote: {
     title: 'Nice title bro'
   }
 }

@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { setFilePath, saveTitle, saveCopy } from '../note'
+import { setFilePath, saveTitle, saveCopy } from '../activeNote'
 import { SET_FILE_PATH, SAVE_TITLE, SAVE_COPY } from 'constants/actionTypes'
 
 describe('actions > input', () => {

@@ -12,7 +12,7 @@ import '../app.global.css'
 const activeNotePath = getMostRecentNote(NOTES_ROOT_FOLDER)
 const initialState = {
   list: getNotesTree(NOTES_ROOT_FOLDER),
-  activeNote: noteFromTemplate(NOTES_ROOT_FOLDER, activeNotePath)
+  activeNote: noteFromTemplate(activeNotePath)
 }
 const store = mainStore(initialState)
 const history = syncHistoryWithStore(hashHistory, store)

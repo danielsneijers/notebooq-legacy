@@ -5,7 +5,7 @@ import CSS from './NoteBody.css'
 
 const NoteBody = ({ copy, saveCopy }) => {
   return <TextareaAutosize
-    defaultValue={copy}
+    value={copy}
     name="Copy"
     className={CSS.Textarea}
     onChange={saveCopy} />

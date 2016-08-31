@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ENV=development concurrently -k 'babel-node server.js' 'electron .'",
     "test": "ENV=test NODE_PATH='src/js' istanbul cover --colors  _mocha -- --require './config/testSetup.js' --compilers js:babel-register --recursive 'src/**/*.test.js' && npm run plato",
-    "test:watch": "ENV=test NODE_PATH='src/js' mocha 'src/js/**/*.test.js' --recursive --harmony_proxies --require './config/testSetup.js' --watch",
+    "test:watch": "ENV=test NODE_PATH='src/js' mocha 'src/js/**/*.test.js' --recursive --require './config/testSetup.js' --watch",
     "plato": "plato -r -e '.eslintrc' -x '\\.test\\.js$' -d report src"
   },
   "keywords": [],

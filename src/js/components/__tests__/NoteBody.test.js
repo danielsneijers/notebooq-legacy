@@ -14,6 +14,7 @@ describe('components > NoteBody', () => {
   it('renders an empty textarea when no children copy is passed', () => {
     const wrapper = shallow(<NoteBody saveCopy={saveCopy} />)
 
+    expect(wrapper.prop('value')).to.equal(undefined)
     expect(wrapper.prop('defaultValue')).to.equal(undefined)
     expect(wrapper.html()).to.equal('<textarea name="Copy" rows="1"></textarea>')
   })
@@ -24,7 +25,7 @@ describe('components > NoteBody', () => {
       <NoteBody saveCopy={saveCopy} copy={copy} />
     )
 
-    expect(wrapper.prop('defaultValue')).to.equal(copy)
+    expect(wrapper.prop('value')).to.equal(copy)
     expect(wrapper.html()).to.equal(`<textarea name="Copy" rows="1">${copy}</textarea>`)
   })
 

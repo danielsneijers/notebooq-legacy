@@ -25,7 +25,7 @@ export function renameFile (filePath, newName) {
 }
 
 export function getRenamedFilePath (filePath, newName) {
-  return filePath.replace(getTitleFromFilePath(filePath), newName)
+  return `${path.dirname(filePath)}/${newName}.md`
 }
 
 export function saveCopyToFile (filePath, copy) {

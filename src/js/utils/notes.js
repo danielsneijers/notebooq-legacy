@@ -18,7 +18,7 @@ export function getNotesTree (dir = NOTES_ROOT_FOLDER) {
 
   const rootFolderFiles = rootFolderContent
     .filter((file) => isFile(`${dir}/${file}`))
-    .map((file) => noteFromTemplate(dir, `${dir}/${file}`))
+    .map((file) => noteFromTemplate(`${dir}/${file}`))
 
   const treeFolderFiles = folders.reduce((acc, folderName) => {
     const currentPath = `${dir}/${folderName}`
@@ -26,7 +26,7 @@ export function getNotesTree (dir = NOTES_ROOT_FOLDER) {
 
     return {
       ...acc,
-      [folderName]: files.map((file) => noteFromTemplate(currentPath, `${currentPath}/${file}`))
+      [folderName]: files.map((file) => noteFromTemplate(`${currentPath}/${file}`))
     }
   }, {})
 
@@ -36,7 +36,7 @@ export function getNotesTree (dir = NOTES_ROOT_FOLDER) {
   }
 }
 
-export function noteFromTemplate (currentPath, filePath) {
+export function noteFromTemplate (filePath) {
   return {
     path: filePath,
     title: getTitleFromFilePath(filePath),

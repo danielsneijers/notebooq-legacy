@@ -3,18 +3,19 @@ import classNames from 'classnames'
 
 import CSS from './ListItem.css'
 
-const ListItem = ({ note, folder }) => {
+const ListItem = ({ note, folder, handleClick }) => {
   const title = folder || note.title
   const classes = classNames(CSS.ListItem, {
     [CSS.Folder]: !!folder
   })
 
-  return <li className={classes}>{title}</li>
+  return <li className={classes} onClick={handleClick}>{title}</li>
 }
 
 ListItem.propTypes = {
   note: PropTypes.object,
-  folder: PropTypes.string
+  folder: PropTypes.string,
+  handleClick: PropTypes.func.isRequired
 }
 
 export default ListItem

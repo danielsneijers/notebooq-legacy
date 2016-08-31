@@ -1,28 +1,22 @@
-import { SET_FILE_PATH, SAVE_TITLE, SAVE_COPY } from 'constants/actionTypes'
-
-export function setFilePath (path) {
-  return {
-    type: SET_FILE_PATH,
-    payload: path
-  }
-}
+import { SAVE_TITLE, SAVE_COPY, SELECT_NOTE } from 'constants/actionTypes'
 
 export function saveTitle (event) {
   return {
     type: SAVE_TITLE,
-    payload: event.currentTarget.value,
-    meta: {
-      debounce: 'simple'
-    }
+    payload: event.currentTarget.value
   }
 }
 
 export function saveCopy (event) {
   return {
     type: SAVE_COPY,
-    payload: event.currentTarget.value,
-    meta: {
-      debounce: 'simple'
-    }
+    payload: event.currentTarget.value
+  }
+}
+
+export function selectNote (path) {
+  return {
+    type: SELECT_NOTE,
+    payload: path
   }
 }

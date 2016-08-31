@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import List from 'components/List'
-import ListItem from 'components/ListItem'
+import ListItemContainer from 'containers/ListItemContainer'
 
 import CSS from './Sidebar.css'
 
@@ -9,7 +9,7 @@ const Sidebar = ({ list }) => {
   const renderedFolders = folders.map((folderName) => {
     return (
       <List key={`${folderName}List`} notes={list[folderName]}>
-        <ListItem key={`${folderName}ListItem`} folder={folderName} />
+        <ListItemContainer key={`${folderName}ListItem`} folder={folderName} />
       </List>
     )
   })

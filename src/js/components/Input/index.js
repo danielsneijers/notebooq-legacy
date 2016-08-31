@@ -5,7 +5,7 @@ import CSS from './Input.css'
 const Input = ({ title, saveTitle }) => {
   return <input
     name="Title"
-    defaultValue={title}
+    value={title}
     placeholder="Untitled note..."
     className={CSS.Input}
     onChange={saveTitle} />

@@ -1,6 +1,6 @@
 import { NOTES_ROOT_FOLDER } from 'constants/app'
-import { getDirContents, getAllFolders, getMostRecentModifiedFileFromDir } from 'utils/dir'
-import { isFile, getFilesFromFolder, getTitleFromFilePath, getFileContents } from 'utils/file'
+import { getDirContents, listAllFolders, getMostRecentModifiedFileFromDir } from 'utils/dir'
+import { isFile, listFilesFromFolder, getTitleFromFilePath, getFileContents, getFolderFromFilePath } from 'utils/file'
 
 export function getMostRecentNote (dir = NOTES_ROOT_FOLDER) {
   const files = getDirContents(dir)
@@ -13,16 +13,14 @@ export function getMostRecentNote (dir = NOTES_ROOT_FOLDER) {
 }
 
 export function getSelectedNoteFromTree (notes) {
-  const selectedNote = Object.keys(notes)
-    .map((folder) => notes[folder].find((note) => note.selected))
-    .filter((note) => note)
+  const selectedNote = notes.find((note) => note.selected)
 
-  return selectedNote[0] || {}
+  return selectedNote || {}
 }
 
 export function getNotesTree (dir = NOTES_ROOT_FOLDER, defaultSelectedNotePath) {
-  const folders = getAllFolders(dir)
-  const rootFolderContent = getFilesFromFolder(dir)
+  const folders = listAllFolders(dir)
+  const rootFolderContent = listFilesFromFolder(dir)
 
   const rootFolderFiles = rootFolderContent
     .filter((file) => isFile(`${dir}/${file}`))
@@ -30,30 +28,30 @@ export function getNotesTree (dir = NOTES_ROOT_FOLDER, defaultSelectedNotePath) 
 
   const treeFolderFiles = folders.reduce((acc, folderName) => {
     const currentPath = `${dir}/${folderName}`
-    const files = getFilesFromFolder(currentPath)
+    const files = listFilesFromFolder(currentPath)
 
-    return {
+    return [
       ...acc,
-      [folderName]: files.map((file) => {
+      ...files.map((file) => {
         const notePath = `${currentPath}/${file}`
         const selected = notePath === defaultSelectedNotePath
-        return noteFromTemplate(notePath, folderName, selected)
+        return noteFromTemplate(notePath, selected)
       })
-    }
-  }, {})
+    ]
+  }, [])
 
-  return {
-    ...treeFolderFiles,
-    Default: rootFolderFiles
-  }
+  return [
+    ...rootFolderFiles,
+    ...treeFolderFiles
+  ]
 }
 
-export function noteFromTemplate (filePath, folder, selected = false) {
+export function noteFromTemplate (filePath, selected = false) {
   return {
     path: filePath,
     title: getTitleFromFilePath(filePath),
     copy: getFileContents(filePath),
-    folder,
+    folder: getFolderFromFilePath(filePath),
     selected
   }
 }

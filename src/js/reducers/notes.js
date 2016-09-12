@@ -1,6 +1,5 @@
 import { SAVE_TITLE, SAVE_COPY, SELECT_NOTE } from 'constants/actionTypes'
 import { renameFile, getRenamedFilePath, saveCopyToFile } from 'utils/file'
-import { noteFromTemplate } from 'utils/notes'
 
 export default function note (state = {}, action) {
   const { type, payload } = action
@@ -15,10 +14,12 @@ export default function note (state = {}, action) {
       return { ...state, copy: action.payload }
 
     case SELECT_NOTE:
-      return {
-        ...state,
-        ...noteFromTemplate(payload)
-      }
+      return state.map((note) => {
+        return {
+          ...note,
+          selected: note.path === payload
+        }
+      })
 
     default:
       return state

@@ -4,7 +4,7 @@ import {
   isDirectory,
   getDirContents,
   getMostRecentModifiedFileFromDir,
-  getAllFolders
+  listAllFolders
 } from '../dir'
 
 const fixturesDirPath = path.resolve('src/js/utils/__tests__/fixtures')
@@ -34,9 +34,9 @@ describe('utils > dir', () => {
     })
   })
 
-  describe('getAllFolders', () => {
+  describe('listAllFolders', () => {
     it('returns all folders in the notes directory', () => {
-      const actualResult = getAllFolders(fixturesDirPath)
+      const actualResult = listAllFolders(fixturesDirPath)
       const expectedResult = ['Personal', 'Work']
 
       expect(actualResult).to.deep.equal(expectedResult)

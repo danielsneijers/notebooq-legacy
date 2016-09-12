@@ -6,12 +6,18 @@ export function isFile (path) {
   return fs.statSync(path).isFile()
 }
 
-export function getFilesFromFolder (dir) {
+export function listFilesFromFolder (dir) {
   return getDirContents(dir).filter((item) => isFile(`${dir}/${item}`))
 }
 
 export function getFileContents (filePath) {
   return fs.readFileSync(filePath, 'utf8')
+}
+
+export function getFolderFromFilePath (filePath) {
+  const dirPath = path.dirname(filePath).split('/')
+
+  return dirPath[dirPath.length - 1]
 }
 
 export function getTitleFromFilePath (filePath) {

@@ -17,7 +17,7 @@ export function getMostRecentModifiedFileFromDir (dir, files) {
   return max(files, (file) => fs.statSync(`${dir}/${file}`).mtime)
 }
 
-export function getAllFolders (dir = NOTES_ROOT_FOLDER) {
+export function listAllFolders (dir = NOTES_ROOT_FOLDER) {
   const dirContents = getDirContents(dir)
 
   return dirContents.filter((item) => isDirectory(`${dir}/${item}`))

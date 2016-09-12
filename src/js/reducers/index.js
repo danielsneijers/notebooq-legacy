@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux'
 import { routerReducer as routing } from 'react-router-redux'
-import activeNote from './activeNote'
-import list from './list'
+import notes from './notes'
 
 const rootReducer = combineReducers({
-  activeNote,
-  list,
+  notes,
   routing
 })
 

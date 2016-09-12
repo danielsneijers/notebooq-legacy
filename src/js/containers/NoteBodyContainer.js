@@ -1,16 +1,17 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as ActiveNoteActions from 'actions/activeNote'
+import { getSelectedNoteFromTree } from 'utils/notes'
+import * as NotesActions from 'actions/notes'
 import NoteBody from 'components/NoteBody'
 
 export function mapStateToProps (state) {
   return {
-    copy: state.activeNote.copy
+    note: getSelectedNoteFromTree(state.notes)
   }
 }
 
 export function mapDispatchToProps (dispatch) {
-  return bindActionCreators(ActiveNoteActions, dispatch)
+  return bindActionCreators(NotesActions, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NoteBody)

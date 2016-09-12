@@ -12,7 +12,15 @@ export function getMostRecentNote (dir = NOTES_ROOT_FOLDER) {
     : getMostRecentNote(mostRecentFilePath)
 }
 
-export function getNotesTree (dir = NOTES_ROOT_FOLDER) {
+export function getSelectedNoteFromTree (notes) {
+  const selectedNote = Object.keys(notes)
+    .map((folder) => notes[folder].find((note) => note.selected))
+    .filter((note) => note)
+
+  return selectedNote[0] || {}
+}
+
+export function getNotesTree (dir = NOTES_ROOT_FOLDER, defaultSelectedNotePath) {
   const folders = getAllFolders(dir)
   const rootFolderContent = getFilesFromFolder(dir)
 
@@ -26,7 +34,11 @@ export function getNotesTree (dir = NOTES_ROOT_FOLDER) {
 
     return {
       ...acc,
-      [folderName]: files.map((file) => noteFromTemplate(`${currentPath}/${file}`))
+      [folderName]: files.map((file) => {
+        const notePath = `${currentPath}/${file}`
+        const selected = notePath === defaultSelectedNotePath
+        return noteFromTemplate(notePath, folderName, selected)
+      })
     }
   }, {})
 
@@ -36,10 +48,12 @@ export function getNotesTree (dir = NOTES_ROOT_FOLDER) {
   }
 }
 
-export function noteFromTemplate (filePath) {
+export function noteFromTemplate (filePath, folder, selected = false) {
   return {
     path: filePath,
     title: getTitleFromFilePath(filePath),
-    copy: getFileContents(filePath)
+    copy: getFileContents(filePath),
+    folder,
+    selected
   }
 }

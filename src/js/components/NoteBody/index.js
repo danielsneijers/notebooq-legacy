@@ -3,7 +3,8 @@ import TextareaAutosize from 'react-autosize-textarea'
 
 import CSS from './NoteBody.css'
 
-const NoteBody = ({ copy, saveCopy }) => {
+const NoteBody = ({ note, saveCopy }) => {
+  const { copy } = note
   return <TextareaAutosize
     value={copy}
     name="Copy"
@@ -12,7 +13,7 @@ const NoteBody = ({ copy, saveCopy }) => {
 }
 
 NoteBody.propTypes = {
-  copy: PropTypes.string,
+  note: PropTypes.object,
   saveCopy: PropTypes.func.isRequired
 }
 

@@ -1,8 +1,11 @@
+@import '../../../css/Sizes.css';
+
 .Note {
   position: relative;
-  width: 100%;
-  max-width: 40rem;
-  min-height: 100vh;
-  margin: 0 auto;
+  width: calc(100% - var(--notes-list-width));
+  height: calc(100vh - var(--title-bar-height));
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin: 0 auto 0 var(--notes-list-width);
   padding: 1rem 2rem;
 }

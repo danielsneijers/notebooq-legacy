@@ -3,9 +3,6 @@ import path from 'path'
 import {
   isFile,
   getFileContents,
-  getDirContents,
-  getMostRecentModifiedFileFromArray,
-  getMostRecentNote,
   getTitleFromFilePath,
   renameFile,
   getRenamedFilePath,
@@ -27,28 +24,6 @@ describe('utils > file', () => {
   describe('getFileContents', () => {
     it('returns the contents of a file', () => {
       expect(getFileContents(sampleNotePath)).to.equal(fileContents)
-    })
-  })
-
-  describe('getDirContents', () => {
-    it('returns array with the files from a directory', () => {
-      const expectedResult = [ 'sampleNote.md' ]
-
-      expect(getDirContents(fixturesDirPath)).to.deep.equal(expectedResult)
-    })
-  })
-
-  describe('getMostRecentModifiedFileFromArray', () => {
-    it('returns the latest modified file from an array', () => {
-      const actualResult = getMostRecentModifiedFileFromArray(fixturesDirPath, [sampleNotePath])
-
-      expect(actualResult).to.deep.equal(sampleNotePath)
-    })
-  })
-
-  describe('getMostRecentNote', () => {
-    it('returns the file last modified by the syste or user', () => {
-      expect(getMostRecentNote(fixturesDirPath)).to.equal(sampleNotePath)
     })
   })
 

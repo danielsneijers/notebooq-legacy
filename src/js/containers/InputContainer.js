@@ -1,16 +1,17 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as NoteActions from 'actions/note'
+import * as NotesActions from 'actions/notes'
+import { getSelectedNoteFromTree } from 'utils/notes'
 import Input from 'components/Input'
 
 export function mapStateToProps (state) {
   return {
-    title: state.note.title
+    note: getSelectedNoteFromTree(state.notes)
   }
 }
 
 export function mapDispatchToProps (dispatch) {
-  return bindActionCreators(NoteActions, dispatch)
+  return bindActionCreators(NotesActions, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Input)

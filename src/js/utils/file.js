@@ -1,32 +1,23 @@
 import fs from 'fs'
 import path from 'path'
-import { max } from 'lodash'
+import { getDirContents } from './dir'
 
-export function isFile (file) {
-  return fs.statSync(file).isFile()
+export function isFile (path) {
+  return fs.statSync(path).isFile()
+}
+
+export function listFilesFromFolder (dir) {
+  return getDirContents(dir).filter((item) => isFile(`${dir}/${item}`))
 }
 
 export function getFileContents (filePath) {
   return fs.readFileSync(filePath, 'utf8')
 }
 
-export function getDirContents (dir) {
-  return fs.readdirSync(dir)
-}
+export function getFolderFromFilePath (filePath) {
+  const dirPath = path.dirname(filePath).split('/')
 
-export function getMostRecentModifiedFileFromArray (dir, files) {
-  /* istanbul ignore next */
-  return max(files, (file) => fs.statSync(`${dir}/${file}`).mtime)
-}
-
-export function getMostRecentNote (dir) {
-  const files = getDirContents(dir)
-  const mostRecentFile = getMostRecentModifiedFileFromArray(dir, files)
-  const mostRecentFilePath = `${dir}/${mostRecentFile}`
-
-  return isFile(mostRecentFilePath)
-    ? mostRecentFilePath /* istanbul ignore next */
-    : getMostRecentNote(mostRecentFilePath)
+  return dirPath[dirPath.length - 1]
 }
 
 export function getTitleFromFilePath (filePath) {
@@ -40,7 +31,7 @@ export function renameFile (filePath, newName) {
 }
 
 export function getRenamedFilePath (filePath, newName) {
-  return filePath.replace(getTitleFromFilePath(filePath), newName)
+  return `${path.dirname(filePath)}/${newName}.md`
 }
 
 export function saveCopyToFile (filePath, copy) {

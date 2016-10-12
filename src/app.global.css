@@ -10,3 +10,11 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
   line-height: 1.5rem;
   font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
 }
+
+/* TODO check if this is the best place */
+html,
+body {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}

@@ -15,6 +15,7 @@ describe('components > Input', () => {
     const wrapper = shallow(<Input saveTitle={saveTitle} />)
 
     expect(wrapper.prop('defaultValue')).to.equal(undefined)
+    expect(wrapper.prop('value')).to.equal(undefined)
     expect(wrapper.html()).to.equal('<input name="Title" placeholder="Untitled note..."/>')
   })
 
@@ -22,8 +23,8 @@ describe('components > Input', () => {
     const title = 'New note'
     const wrapper = shallow(<Input title={title} saveTitle={saveTitle} />)
 
-    expect(wrapper.prop('defaultValue')).to.equal(title)
-    expect(wrapper.html()).to.equal(`<input name="Title" placeholder="Untitled note..." value="${title}"/>`)
+    expect(wrapper.prop('value')).to.equal(title)
+    expect(wrapper.html()).to.equal(`<input name="Title" value="${title}" placeholder="Untitled note..."/>`)
   })
 
   it('saves the title when input value is changed', () => {

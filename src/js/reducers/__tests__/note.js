@@ -3,18 +3,18 @@ import { expect } from 'chai'
 import { stub } from 'sinon'
 import deepFreeze from 'deep-freeze'
 import * as fileUtils from 'utils/file'
-import note from '../note'
+import notes from '../notes'
 
 const fixturesDirPath = path.resolve('src/js/utils/__tests__/fixtures')
 const sampleNotePath = `${fixturesDirPath}/sampleNote.md`
-const copy = '# This sample note helps unit testing\n'
+const copy = '# This sample notes helps unit testing\n'
 const initialState = {
   path: sampleNotePath,
   title: 'sampleNote',
   copy
 }
 
-describe('reducers > note', () => {
+describe('reducers > notes', () => {
   it('returns an action object with the correct payload when saving a title', () => {
     const action = {
       type: 'SAVE_TITLE',
@@ -30,7 +30,7 @@ describe('reducers > note', () => {
     stub(fileUtils, 'renameFile', () => null)
     deepFreeze(initialState)
 
-    expect(note(initialState, action)).to.deep.equal(expectedResult)
+    expect(notes(initialState, action)).to.deep.equal(expectedResult)
     expect(fileUtils.renameFile.calledOnce).to.equal(true)
 
     fileUtils.renameFile.restore()
@@ -50,7 +50,7 @@ describe('reducers > note', () => {
     stub(fileUtils, 'saveCopyToFile', () => null)
     deepFreeze(initialState)
 
-    expect(note(initialState, action)).to.deep.equal(expectedResult)
+    expect(notes(initialState, action)).to.deep.equal(expectedResult)
 
     fileUtils.saveCopyToFile.restore()
   })
@@ -63,12 +63,12 @@ describe('reducers > note', () => {
 
     deepFreeze(initialState)
 
-    expect(note(initialState, action)).to.deep.equal(initialState)
+    expect(notes(initialState, action)).to.deep.equal(initialState)
   })
 
   it('uses the default state when none provided', () => {
     const action = {}
 
-    expect(note(undefined, action)).to.deep.equal({})
+    expect(notes(undefined, action)).to.deep.equal({})
   })
 })

@@ -14,8 +14,9 @@ describe('components > NoteBody', () => {
   it('renders an empty textarea when no children copy is passed', () => {
     const wrapper = shallow(<NoteBody saveCopy={saveCopy} />)
 
+    expect(wrapper.prop('value')).to.equal(undefined)
     expect(wrapper.prop('defaultValue')).to.equal(undefined)
-    expect(wrapper.html()).to.equal('<textarea name="Copy"></textarea>')
+    expect(wrapper.html()).to.equal('<textarea name="Copy" rows="1"></textarea>')
   })
 
   it('renders a prefilled textarea when copy prop is passed', () => {
@@ -24,8 +25,8 @@ describe('components > NoteBody', () => {
       <NoteBody saveCopy={saveCopy} copy={copy} />
     )
 
-    expect(wrapper.prop('defaultValue')).to.equal(copy)
-    expect(wrapper.html()).to.equal(`<textarea name="Copy">${copy}</textarea>`)
+    expect(wrapper.prop('value')).to.equal(copy)
+    expect(wrapper.html()).to.equal(`<textarea name="Copy" rows="1">${copy}</textarea>`)
   })
 
   it('saves the title when input value is changed', () => {

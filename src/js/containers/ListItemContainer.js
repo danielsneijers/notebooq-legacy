@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => {
 
 export function mapDispatchToProps (dispatch, ownProps) {
   return {
-    handleClick: () => { dispatch(selectNote(ownProps.note.path)) }
+    handleClick: () => { dispatch(selectNote(ownProps.note.id)) }
   }
 }
 

@@ -1,37 +1,28 @@
 import { expect } from 'chai'
-import { saveTitle, saveCopy } from '../notes'
-import { SAVE_TITLE, SAVE_COPY } from 'constants/actionTypes'
+import { mockNote } from '../../__tests__/fixtures'
+import { saveNote, selectNote } from '../note'
+import { SAVE_NOTE, SELECT_NOTE } from 'constants/actionTypes'
 
 describe('actions > note', () => {
-  describe('saveTitle', () => {
+  describe('saveNote', () => {
     it('returns an action object with the correct payload', () => {
-      const event = {
-        currentTarget: {
-          value: 'Nice title bro'
-        }
-      }
       const expectedResult = {
-        type: SAVE_TITLE,
-        payload: 'Nice title bro'
+        type: SAVE_NOTE,
+        payload: mockNote
       }
 
-      expect(saveTitle(event)).to.deep.equal(expectedResult)
+      expect(saveNote(mockNote)).to.deep.equal(expectedResult)
     })
   })
 
-  describe('saveCopy', () => {
+  describe('selectNote', () => {
     it('returns an action object with the correct payload', () => {
-      const event = {
-        currentTarget: {
-          value: 'Some inspiring text, you should read it'
-        }
-      }
       const expectedResult = {
-        type: SAVE_COPY,
-        payload: 'Some inspiring text, you should read it'
+        type: SELECT_NOTE,
+        payload: 1
       }
 
-      expect(saveCopy(event)).to.deep.equal(expectedResult)
+      expect(selectNote(1)).to.deep.equal(expectedResult)
     })
   })
 })

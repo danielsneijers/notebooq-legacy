@@ -3,18 +3,16 @@ import TextareaAutosize from 'react-autosize-textarea'
 
 import CSS from './NoteBody.css'
 
-const NoteBody = ({ note, saveCopy }) => {
-  const { copy } = note
+const NoteBody = ({ body, ...rest }) => {
   return <TextareaAutosize
-    value={copy}
+    value={body}
     name="Copy"
     className={CSS.Textarea}
-    onChange={saveCopy} />
+    {...rest} />
 }
 
 NoteBody.propTypes = {
-  note: PropTypes.object,
-  saveCopy: PropTypes.func.isRequired
+  body: PropTypes.string.isRequired
 }
 
 export default NoteBody

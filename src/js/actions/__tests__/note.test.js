@@ -2,7 +2,7 @@ import { expect } from 'chai'
 import { saveTitle, saveCopy } from '../notes'
 import { SAVE_TITLE, SAVE_COPY } from 'constants/actionTypes'
 
-describe('actions > notes', () => {
+describe('actions > note', () => {
   describe('saveTitle', () => {
     it('returns an action object with the correct payload', () => {
       const event = {

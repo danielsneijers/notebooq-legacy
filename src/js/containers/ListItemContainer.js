@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { selectNote } from 'actions/notes'
+import { selectNote } from 'actions/note'
 import ListItem from 'components/ListItem'
 
 const mapStateToProps = (state, ownProps) => {
@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => {
 
 export function mapDispatchToProps (dispatch, ownProps) {
   return {
-    handleClick: () => { dispatch(selectNote(ownProps.note.path)) }
+    handleClick: () => { dispatch(selectNote(ownProps.note.id)) }
   }
 }
 

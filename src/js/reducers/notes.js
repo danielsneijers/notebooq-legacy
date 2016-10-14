@@ -1,23 +1,24 @@
-import { SAVE_TITLE, SAVE_COPY, SELECT_NOTE } from 'constants/actionTypes'
-import { renameFile, getRenamedFilePath, saveCopyToFile } from 'utils/file'
+import Moment from 'moment'
+import { SAVE_NOTE, SELECT_NOTE } from 'constants/actionTypes'
 
-export default function note (state = {}, action) {
+export default function note (state = [], action) {
   const { type, payload } = action
 
   switch (type) {
-    case SAVE_TITLE:
-      renameFile(state.path, payload)
-      return { ...state, title: payload, path: getRenamedFilePath(state.path, payload) }
-
-    case SAVE_COPY:
-      saveCopyToFile(state.path, payload)
-      return { ...state, copy: action.payload }
+    case SAVE_NOTE:
+      const updatedNote = {
+        ...payload,
+        updated_at: Moment().unix()
+      }
+      const newState = state.map((note) => note.selected ? updatedNote : note)
+      localStorage.setItem('notes', JSON.stringify(newState))
+      return newState
 
     case SELECT_NOTE:
       return state.map((note) => {
         return {
           ...note,
-          selected: note.path === payload
+          selected: note.id === payload
         }
       })
 

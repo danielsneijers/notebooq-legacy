@@ -35,9 +35,6 @@ class Note extends Component {
   render () {
     const { note } = this.props
 
-    console.log('%c note ', 'background-color:#3498db; color: white; font-weight: bold; padding: 4px 0;')
-    console.log(note)
-
     return (
       <div className={CSS.Note}>
         <SidebarContainer />

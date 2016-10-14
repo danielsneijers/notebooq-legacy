@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { selectNote } from 'actions/notes'
+import { selectNote } from 'actions/note'
 import ListItem from 'components/ListItem'
 
 const mapStateToProps = (state, ownProps) => {

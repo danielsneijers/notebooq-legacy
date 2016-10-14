@@ -1,16 +1,9 @@
-import { SAVE_TITLE, SAVE_COPY, SELECT_NOTE } from 'constants/actionTypes'
+import { SELECT_NOTE, SAVE_NOTE } from 'constants/actionTypes'
 
-export function saveTitle (event) {
+export function saveNote (note) {
   return {
-    type: SAVE_TITLE,
-    payload: event.currentTarget.value
-  }
-}
-
-export function saveCopy (event) {
-  return {
-    type: SAVE_COPY,
-    payload: event.currentTarget.value
+    type: SAVE_NOTE,
+    payload: note
   }
 }
 

@@ -2,20 +2,17 @@ import React, { PropTypes } from 'react'
 
 import CSS from './Input.css'
 
-const Input = ({ note, saveTitle }) => {
-  const { title } = note
-
+const Input = ({ title, ...rest }) => {
   return <input
     name="Title"
     value={title}
     placeholder="Untitled note..."
     className={CSS.Input}
-    onChange={saveTitle} />
+    {...rest} />
 }
 
 Input.propTypes = {
-  note: PropTypes.object,
-  saveTitle: PropTypes.func.isRequired
+  title: PropTypes.string.isRequired
 }
 
 export default Input

@@ -1,4 +1,5 @@
 export function getMostRecentNote (notes) {
+  // TODO fill in this method
   return {}
 }
 

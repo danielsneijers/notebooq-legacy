@@ -6,6 +6,7 @@ import NoteBody from 'components/NoteBody'
 import CSS from './Note.css'
 
 class Note extends Component {
+  /* istanbul ignore next: constructors won't be tested */
   constructor (props) {
     super(props)
 

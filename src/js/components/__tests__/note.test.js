@@ -1,20 +1,56 @@
 import React from 'react'
-import configureStore from 'redux-mock-store'
-import thunk from 'redux-thunk'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
+import { spy } from 'sinon'
+import { mockNote } from '../../__tests__/fixtures'
 import Note from '../Note'
 import NoteTitle from 'components/NoteTitle'
-
-const middlewares = [thunk] // add your middlewares like `redux-thunk`
-const mockStore = configureStore(middlewares)
+import NoteBody from 'components/NoteBody'
+import CSS from '../Note/Note.css'
 
 describe('components > Note', () => {
-  // it('renders an empty input when no props are passed', () => {
-  //   const wrapper = shallow(<Note />, { context: { store: mockStore() } })
-  //
-  //   expect(wrapper.containsMatchingElement(
-  //     <NoteTitle />
-  //   )).to.equal(true)
-  // })
+  it('renders a title and body when a note is passed', () => {
+    const onSaveNote = spy()
+    const wrapper = shallow(<Note note={mockNote} saveNote={onSaveNote} />)
+
+    expect(wrapper.hasClass(CSS.Note)).to.be.true
+    expect(wrapper.containsAllMatchingElements([
+      <NoteTitle title={mockNote.title} />,
+      <NoteBody body={mockNote.body} />
+    ])).to.be.true
+  })
+
+  it('saves the note when onTitleChange is called', () => {
+    const onSaveNote = spy()
+    const wrapper = shallow(<Note note={mockNote} saveNote={onSaveNote} />)
+    const event = { currentTarget: { value: 'nice change' } }
+    const expectedArgument = {
+      ...mockNote,
+      title: event.currentTarget.value
+    }
+
+    expect(onSaveNote.called).to.be.false
+
+    wrapper.instance().handleTitleChange(event)
+
+    expect(onSaveNote.calledOnce).to.be.true
+    expect(onSaveNote.calledWith(expectedArgument)).to.be.true
+  })
+
+  it('saves the note when onCopyChange is called', () => {
+    const onSaveNote = spy()
+    const wrapper = shallow(<Note note={mockNote} saveNote={onSaveNote} />)
+    const event = { currentTarget: { value: 'nice change' } }
+    const expectedArgument = {
+      ...mockNote,
+      body: event.currentTarget.value
+    }
+
+    expect(onSaveNote.called).to.be.false
+
+    wrapper.instance().handleCopyChange(event)
+
+    expect(onSaveNote.calledOnce).to.be.true
+    expect(onSaveNote.calledWith(expectedArgument)).to.be.true
+  })
 })

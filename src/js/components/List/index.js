@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 import ListItemContainer from 'containers/ListItemContainer'
-
 import CSS from './List.css'
 
 const List = ({ children, notes }) => {

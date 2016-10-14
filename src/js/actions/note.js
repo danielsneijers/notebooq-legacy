@@ -1,4 +1,4 @@
-import { SELECT_NOTE, SAVE_NOTE } from 'constants/actionTypes'
+import { SAVE_NOTE, SELECT_NOTE } from 'constants/actionTypes'
 
 export function saveNote (note) {
   return {
@@ -7,9 +7,9 @@ export function saveNote (note) {
   }
 }
 
-export function selectNote (path) {
+export function selectNote (id) {
   return {
     type: SELECT_NOTE,
-    payload: path
+    payload: id
   }
 }

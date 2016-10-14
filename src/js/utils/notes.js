@@ -1,6 +1,11 @@
 export function getMostRecentNote (notes) {
-  // TODO fill in this method
-  return {}
+  const mostRecentNote = notes.reduce((prev, curr) => {
+    return prev.updated_at > curr.updated_at
+      ? prev
+      : curr
+  })
+
+  return mostRecentNote
 }
 
 export function getSelectedNoteFromTree (notes) {

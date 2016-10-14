@@ -1,18 +1,18 @@
 import React, { PropTypes } from 'react'
 
-import CSS from './Input.css'
+import CSS from './NoteTitle.css'
 
-const Input = ({ title, ...rest }) => {
+const NoteTitle = ({ title, ...rest }) => {
   return <input
     name="Title"
     value={title}
     placeholder="Untitled note..."
-    className={CSS.Input}
+    className={CSS.NoteTitle}
     {...rest} />
 }
 
-Input.propTypes = {
+NoteTitle.propTypes = {
   title: PropTypes.string.isRequired
 }
 
-export default Input
+export default NoteTitle

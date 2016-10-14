@@ -1,20 +1,11 @@
 import React, { PropTypes } from 'react'
-import classNames from 'classnames'
-
 import CSS from './ListItem.css'
 
-const ListItem = ({ note, folder, handleClick }) => {
-  const title = folder || note.title
-  const classes = classNames(CSS.ListItem, {
-    [CSS.Folder]: !!folder
-  })
-
-  return <li className={classes} onClick={handleClick}>{title}</li>
-}
+const ListItem = ({ title, handleClick }) =>
+  <li className={CSS.ListItem} onClick={handleClick}>{title}</li>
 
 ListItem.propTypes = {
-  note: PropTypes.object,
-  folder: PropTypes.string,
+  title: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired
 }
 

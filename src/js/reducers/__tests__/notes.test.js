@@ -1,64 +1,70 @@
-// import path from 'path'
-// import { expect } from 'chai'
-// import { stub } from 'sinon'
-// import deepFreeze from 'deep-freeze'
-// import notes from '../notes'
+import Moment from 'moment'
+import { expect } from 'chai'
+import { stub } from 'sinon'
+import { mockState } from '../../__tests__/fixtures'
+import notes from '../notes'
 
 describe('reducers > notes', () => {
-  it('returns an action object with the correct payload when saving a title', () => {
-    // const action = {
-    //   type: 'SAVE_TITLE',
-    //   path: sampleNotePath,
-    //   payload: 'Nice title bro'
-    // }
-    // const expectedResult = {
-    //   ...initialState,
-    //   path: `${fixturesDirPath}/Nice title bro.md`,
-    //   title: 'Nice title bro'
-    // }
-    //
-    // stub(fileUtils, 'renameFile', () => null)
-    // deepFreeze(initialState)
-    //
-    // expect(notes(initialState, action)).to.deep.equal(expectedResult)
-    // expect(fileUtils.renameFile.calledOnce).to.equal(true)
-    //
-    // fileUtils.renameFile.restore()
+  beforeEach(() => {
+    stub(Moment, 'unix', () => 1476473790)
   })
 
-  it('returns an action object with the correct payload when saving copy', () => {
-    // const action = {
-    //   type: 'SAVE_COPY',
-    //   path: sampleNotePath,
-    //   payload: 'Some inspiring text, you should read it'
-    // }
-    // const expectedResult = {
-    //   ...initialState,
-    //   copy: 'Some inspiring text, you should read it'
-    // }
-    //
-    // stub(fileUtils, 'saveCopyToFile', () => null)
-    // deepFreeze(initialState)
-    //
-    // expect(notes(initialState, action)).to.deep.equal(expectedResult)
-    //
-    // fileUtils.saveCopyToFile.restore()
+  afterEach(() => {
+    Moment.unix.restore()
+  })
+
+  it('returns an action object with the correct payload when saving a note', () => {
+    const action = {
+      type: 'SAVE_NOTE',
+      payload: mockState.notes[0]
+    }
+    const expectedResult = [
+      {
+        ...mockState.notes[0],
+        updated_at: Moment().unix()
+      },
+      mockState.notes[1],
+      mockState.notes[2]
+    ]
+
+    expect(notes(mockState.notes, action)).to.deep.equal(expectedResult)
+  })
+
+  it('returns an action object with the correct payload when selecting a note', () => {
+    const action = {
+      type: 'SELECT_NOTE',
+      payload: 2
+    }
+    const expectedResult = [
+      {
+        ...mockState.notes[0],
+        selected: false
+      },
+      {
+        ...mockState.notes[1],
+        selected: true
+      },
+      {
+        ...mockState.notes[2],
+        selected: false
+      }
+    ]
+
+    expect(notes(mockState.notes, action)).to.deep.equal(expectedResult)
   })
 
   it('returns the current state when unknow actions is fired', () => {
-    // const action = {
-    //   type: 'YOLO',
-    //   payload: 'This should not be added to the state'
-    // }
-    //
-    // deepFreeze(initialState)
-    //
-    // expect(notes(initialState, action)).to.deep.equal(initialState)
+    const action = {
+      type: 'YOLO',
+      payload: 'This should not modify the state'
+    }
+
+    expect(notes(mockState, action)).to.deep.equal(mockState)
   })
 
   it('uses the default state when none provided', () => {
-    // const action = {}
-    //
-    // expect(notes(undefined, action)).to.deep.equal({})
+    const action = {}
+
+    expect(notes(undefined, action)).to.deep.equal([])
   })
 })

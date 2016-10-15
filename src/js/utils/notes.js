@@ -1,4 +1,8 @@
 export function getMostRecentNote (notes) {
+  if (!notes) {
+    return {}
+  }
+
   const mostRecentNote = notes.reduce((prev, curr) => {
     return prev.updated_at > curr.updated_at
       ? prev
@@ -8,8 +12,10 @@ export function getMostRecentNote (notes) {
   return mostRecentNote
 }
 
-export function getSelectedNoteFromTree (notes) {
-  const selectedNote = notes.find((note) => note.selected)
+export function getSelectedNote (notes) {
+  if (!notes) {
+    return {}
+  }
 
-  return selectedNote || {}
+  return notes.find((note) => note.selected) || {}
 }

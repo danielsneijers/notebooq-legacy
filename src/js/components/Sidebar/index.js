@@ -1,11 +1,9 @@
 import React, { PropTypes } from 'react'
 import List from 'components/List'
 
-import CSS from './Sidebar.css'
-
 const Sidebar = ({ notes }) => {
   return (
-    <div className={CSS.Sidebar}>
+    <div>
       <List notes={notes} />
     </div>
   )

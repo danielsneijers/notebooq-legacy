@@ -1,7 +1,7 @@
 import Moment from 'moment'
 import { SAVE_NOTE, SELECT_NOTE } from 'constants/actionTypes'
 
-export default function note (state = [], action) {
+export default function notes (state = [], action) {
   const { type, payload } = action
 
   switch (type) {
@@ -11,7 +11,7 @@ export default function note (state = [], action) {
         updated_at: Moment().unix()
       }
       const newState = state.map((note) => note.selected ? updatedNote : note)
-      localStorage.setItem('notes', JSON.stringify(newState))
+      window.localStorage.setItem('notes', JSON.stringify(newState))
       return newState
 
     case SELECT_NOTE:

@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { mockNote } from '../../__tests__/fixtures'
+import { mockNote } from 'test/fixtures'
 import { saveNote, selectNote } from '../note'
 import { SAVE_NOTE, SELECT_NOTE } from 'constants/actionTypes'
 

@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import { spy } from 'sinon'
-import { mockState, mockNote } from '../../__tests__/fixtures'
+import { mockState, mockNote } from 'test/fixtures'
 import { mapStateToProps, mapDispatchToProps } from '../NoteContainer'
 
 describe('containers > NoteContainer', () => {

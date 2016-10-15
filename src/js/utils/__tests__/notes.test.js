@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import { getMostRecentNote, getSelectedNote } from '../notes'
-import { mockNotesList, mockNote } from '../../__tests__/fixtures'
+import { mockNotesList, mockNote } from 'test/fixtures'
 
 describe('utils > notes', () => {
   describe('getMostRecentNote', () => {

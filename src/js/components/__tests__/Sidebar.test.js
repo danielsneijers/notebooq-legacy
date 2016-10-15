@@ -1,7 +1,7 @@
 import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
-import { mockNotesList } from '../../__tests__/fixtures'
+import { mockNotesList } from 'test/fixtures'
 import List from '../List'
 import Sidebar from '../Sidebar'
 

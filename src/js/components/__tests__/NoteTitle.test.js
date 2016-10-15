@@ -2,7 +2,7 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 import { spy } from 'sinon'
-import { mockNote } from '../../__tests__/fixtures'
+import { mockNote } from 'test/fixtures'
 import NoteTitle from '../NoteTitle'
 import CSS from '../NoteTitle/NoteTitle.css'
 

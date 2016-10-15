@@ -1,7 +1,7 @@
 import Moment from 'moment'
 import { expect } from 'chai'
 import { stub } from 'sinon'
-import { mockState } from '../../__tests__/fixtures'
+import { mockState } from 'test/fixtures'
 import notes from '../notes'
 
 describe('reducers > notes', () => {

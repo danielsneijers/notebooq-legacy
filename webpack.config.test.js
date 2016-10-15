@@ -1,4 +1,5 @@
 const path = require('path')
+const rootFolder = path.resolve(__dirname)
 
 module.exports = {
   output: {
@@ -13,10 +14,11 @@ module.exports = {
     ]
   },
   resolve: {
-    root: path.resolve(__dirname),
+    root: rootFolder,
     extensions: ['', '.js', '.jsx'],
     modulesDirectories: [
       'node_modules',
+      rootFolder,
       'src/js'
     ]
   }

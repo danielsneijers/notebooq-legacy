@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { mockState, mockNotesList } from '../../__tests__/fixtures'
+import { mockState, mockNotesList } from 'test/fixtures'
 import { mapStateToProps } from '../SidebarContainer'
 
 describe('containers > SidebarContainer', () => {

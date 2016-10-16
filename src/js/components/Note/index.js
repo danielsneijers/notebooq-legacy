@@ -25,7 +25,7 @@ class Note extends Component {
   }
 
   static defaultProps = {
-    showMarkdown: false
+    showMarkdown: true
   }
 
   handleTitleChange (event) {

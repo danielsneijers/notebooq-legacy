@@ -8,7 +8,8 @@ import routes from './routes'
 import '../app.global.css'
 
 const initialState = {
-  notes: JSON.parse(localStorage.getItem('notes'))
+  notes: JSON.parse(localStorage.getItem('notes')),
+  view: { markdown: true }
 }
 
 console.log('%c state ', 'background-color:#f1c40f; color: white; font-weight: bold; padding: 4px 0;')

@@ -40,5 +40,8 @@ export const mockNotesList = [
 
 export const mockState = {
   someProperty: 'someValue',
-  notes: mockNotesList
+  notes: mockNotesList,
+  view: {
+    markdown: true
+  }
 }

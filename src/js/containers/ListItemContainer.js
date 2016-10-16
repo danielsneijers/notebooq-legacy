@@ -6,7 +6,7 @@ export const mapStateToProps = (state, ownProps) => {
   return {...ownProps}
 }
 
-export function mapDispatchToProps (dispatch, ownProps) {
+export const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     handleClick: () => { dispatch(selectNote(ownProps.note.id)) }
   }

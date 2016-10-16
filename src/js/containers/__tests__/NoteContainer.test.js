@@ -13,8 +13,12 @@ describe('containers > NoteContainer', () => {
     const dispatch = spy()
     const dispatchProps = mapDispatchToProps(dispatch)
 
-    expect(dispatchProps).to.have.all.keys('saveNote', 'selectNote')
     expect(dispatch.called).to.be.false
+    expect(dispatchProps).to.have.all.keys(
+      'saveNote',
+      'selectNote',
+      'toggleMarkdownView'
+    )
 
     dispatchProps.saveNote()
     expect(dispatch.calledOnce).to.be.true

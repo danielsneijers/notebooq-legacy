@@ -6,9 +6,6 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 * {
   box-sizing: border-box;
-  font-size: 16px;
-  line-height: 1.5rem;
-  font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
 }
 
 /* TODO check if this is the best place */
@@ -17,4 +14,21 @@ body {
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  font-size: 16px;
+  line-height: 1.5rem;
+  font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+}
+
+h3 {
+  font-size: 2em;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1em;
+  margin-bottom: 1rem;
+}
+
+strong {
+  font-weight: bold;
 }

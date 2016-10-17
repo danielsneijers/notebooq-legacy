@@ -1,4 +1,5 @@
 import Marked from 'marked'
+import { highlightAuto } from 'highlight.js'
 
 export function enhanceListItemToCheckbox (text) {
   if (/^\s*\[[x ]\]\s*/.test(text)) {
@@ -23,5 +24,6 @@ export default Marked.setOptions({
   pedantic: false,
   sanitize: false,
   smartLists: true,
-  smartypants: false
+  smartypants: false,
+  highlight: (code) => highlightAuto(code).value
 })

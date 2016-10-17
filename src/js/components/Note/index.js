@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import RenderMarkdown from 'instances/renderer'
 import SidebarContainer from 'containers/SidebarContainer'
-import Button from 'components/Button'
+import MarkdownToggle from 'components/MarkdownToggle'
 import NoteTitle from 'components/NoteTitle'
 import NoteBody from 'components/NoteBody'
+import NoteBodyHtml from 'components/NoteBodyHtml'
 
 import CSS from './Note.css'
 
@@ -47,7 +48,7 @@ class Note extends Component {
 
     return showMarkdown
       ? <NoteBody body={note.body} onChange={this.handleCopyChange} />
-      : <div dangerouslySetInnerHTML={{__html: RenderMarkdown(note.body)}} />
+      : <NoteBodyHtml body={RenderMarkdown(note.body)} />
   }
 
   render () {
@@ -55,7 +56,7 @@ class Note extends Component {
 
     return (
       <div className={CSS.Note}>
-        <Button onClick={toggleMarkdownView}>Toggle Markdown</Button>
+        <MarkdownToggle onClick={toggleMarkdownView}>Toggle Markdown</MarkdownToggle>
         <SidebarContainer />
         <NoteTitle title={note.title} onChange={this.handleTitleChange} />
         {this.renderNoteBody()}

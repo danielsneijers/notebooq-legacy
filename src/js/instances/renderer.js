@@ -12,7 +12,7 @@ export function enhanceListItemToCheckbox (text) {
   return `<li>${text}</li>`
 }
 
-const renderer = new Marked.Renderer()
+export const renderer = new Marked.Renderer()
 renderer.listitem = (text) => enhanceListItemToCheckbox(text)
 
 export default Marked.setOptions({

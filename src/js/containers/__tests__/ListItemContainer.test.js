@@ -5,7 +5,8 @@ import { mapStateToProps, mapDispatchToProps } from '../ListItemContainer'
 
 describe('containers > ListItemContainer', () => {
   it('adds the correct state to props', () => {
-    expect(mapStateToProps(mockState, {})).to.deep.equal({})
+    const someProp = { someProp: true }
+    expect(mapStateToProps(mockState, someProp)).to.deep.equal(someProp)
   })
 
   it('adds the correct action methods to props', () => {

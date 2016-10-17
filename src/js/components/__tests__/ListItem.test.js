@@ -10,7 +10,7 @@ describe('components > ListItem', () => {
   it('renders a list item with the title of the note', () => {
     const handleClick = spy()
     const wrapper = shallow(
-      <ListItem title={mockNote.title} handleClick={handleClick} />
+      <ListItem note={mockNote} handleClick={handleClick} />
     )
 
     expect(wrapper.type()).to.equal('li')
@@ -21,7 +21,7 @@ describe('components > ListItem', () => {
   it('calls handleClick when clicked', () => {
     const handleClick = spy()
     const wrapper = shallow(
-      <ListItem title={mockNote.title} handleClick={handleClick} />
+      <ListItem note={mockNote} handleClick={handleClick} />
     )
 
     expect(handleClick.called).to.be.false

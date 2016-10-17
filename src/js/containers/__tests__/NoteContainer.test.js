@@ -5,7 +5,10 @@ import { mapStateToProps, mapDispatchToProps } from '../NoteContainer'
 
 describe('containers > NoteContainer', () => {
   it('adds the correct state to props', () => {
-    const expectedResult = { note: mockNote }
+    const expectedResult = {
+      note: mockNote,
+      showMarkdown: true
+    }
     expect(mapStateToProps(mockState)).to.deep.equal(expectedResult)
   })
 
@@ -13,8 +16,12 @@ describe('containers > NoteContainer', () => {
     const dispatch = spy()
     const dispatchProps = mapDispatchToProps(dispatch)
 
-    expect(dispatchProps).to.have.all.keys('saveNote', 'selectNote')
     expect(dispatch.called).to.be.false
+    expect(dispatchProps).to.have.all.keys(
+      'saveNote',
+      'selectNote',
+      'toggleMarkdownView'
+    )
 
     dispatchProps.saveNote()
     expect(dispatch.calledOnce).to.be.true

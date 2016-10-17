@@ -4,7 +4,7 @@ import CSS from './List.css'
 
 const List = ({ notes }) => {
   const renderedNotes = notes
-    .map((note) => <ListItemContainer key={note.id} title={note.title} />)
+    .map((note) => <ListItemContainer key={note.id} note={note} />)
 
   return (
     <ul className={CSS.List}>

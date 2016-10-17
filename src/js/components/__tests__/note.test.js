@@ -6,6 +6,7 @@ import { mockNote } from 'test/fixtures'
 import Note from '../Note'
 import NoteTitle from 'components/NoteTitle'
 import NoteBody from 'components/NoteBody'
+import NoteBodyHtml from 'components/NoteBodyHtml'
 import CSS from '../Note/Note.css'
 
 describe('components > Note', () => {
@@ -17,6 +18,12 @@ describe('components > Note', () => {
     expect(wrapper.containsAllMatchingElements([
       <NoteTitle title={mockNote.title} />,
       <NoteBody body={mockNote.body} />
+    ])).to.be.true
+
+    wrapper.setProps({ showMarkdown: false })
+    expect(wrapper.containsAllMatchingElements([
+      <NoteTitle />,
+      <NoteBodyHtml />
     ])).to.be.true
   })
 

@@ -1,7 +1,10 @@
 import React, { Component, PropTypes } from 'react'
+import RenderMarkdown from 'instances/renderer'
 import SidebarContainer from 'containers/SidebarContainer'
+import MarkdownToggle from 'components/MarkdownToggle'
 import NoteTitle from 'components/NoteTitle'
 import NoteBody from 'components/NoteBody'
+import NoteBodyHtml from 'components/NoteBodyHtml'
 
 import CSS from './Note.css'
 
@@ -12,11 +15,18 @@ class Note extends Component {
 
     this.handleTitleChange = this.handleTitleChange.bind(this)
     this.handleCopyChange = this.handleCopyChange.bind(this)
+    this.renderNoteBody = this.renderNoteBody.bind(this)
   }
 
   static propTypes = {
     note: PropTypes.object.isRequired,
-    saveNote: PropTypes.func.isRequired
+    showMarkdown: PropTypes.bool.isRequired,
+    saveNote: PropTypes.func.isRequired,
+    toggleMarkdownView: PropTypes.func.isRequired
+  }
+
+  static defaultProps = {
+    showMarkdown: true
   }
 
   handleTitleChange (event) {
@@ -33,14 +43,23 @@ class Note extends Component {
     })
   }
 
+  renderNoteBody () {
+    const { note, showMarkdown } = this.props
+
+    return showMarkdown
+      ? <NoteBody body={note.body} onChange={this.handleCopyChange} />
+      : <NoteBodyHtml body={RenderMarkdown(note.body)} />
+  }
+
   render () {
-    const { note } = this.props
+    const { note, toggleMarkdownView } = this.props
 
     return (
       <div className={CSS.Note}>
+        <MarkdownToggle onClick={toggleMarkdownView}>Toggle Markdown</MarkdownToggle>
         <SidebarContainer />
         <NoteTitle title={note.title} onChange={this.handleTitleChange} />
-        <NoteBody body={note.body} onChange={this.handleCopyChange} />
+        {this.renderNoteBody()}
       </div>
     )
   }

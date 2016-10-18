@@ -1,9 +1,8 @@
-// List actions
-export const GET_NOTES = 'GET_NOTES'
-
 // Note actions
-export const SAVE_NOTE = 'SAVE_NOTE'
 export const SELECT_NOTE = 'SELECT_NOTE'
+export const NEW_NOTE = 'NEW_NOTE'
+export const SAVE_NOTE = 'SAVE_NOTE'
+export const DELETE_NOTE = 'DELETE_NOTE'
 
 // View actions
 export const TOGGLE_MARKDOWN_VIEW = 'TOGGLE_MARKDOWN_VIEW'

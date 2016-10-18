@@ -16,6 +16,7 @@ export function enhanceListItemToCheckbox (text) {
 export const renderer = new Marked.Renderer()
 renderer.listitem = (text) => enhanceListItemToCheckbox(text)
 
+/* istanbul ignore next: not testing library code */
 export default Marked.setOptions({
   renderer,
   gfm: true,

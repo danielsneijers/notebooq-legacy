@@ -1,10 +1,27 @@
-export function getMostRecentNote (notes) {
-  if (!notes) {
-    return {}
+import Moment from 'moment'
+import { NoteIdFormatException } from 'utils/errors'
+
+export function newEmptyNote (id, folder = 'default') {
+  if (!id || !Number.isInteger(id)) throw new NoteIdFormatException(id)
+
+  const timestamp = Moment().unix()
+
+  return {
+    id,
+    folder,
+    title: '',
+    body: '',
+    selected: true,
+    created_at: timestamp,
+    updated_at: timestamp
   }
+}
+
+export function getMostRecentNote (notes, excludeNoteIds = []) {
+  if (!notes) return {}
 
   const mostRecentNote = notes.reduce((prev, curr) => {
-    return prev.updated_at > curr.updated_at
+    return excludeNoteIds.includes(curr.id) || (prev.updated_at > curr.updated_at)
       ? prev
       : curr
   })
@@ -13,9 +30,7 @@ export function getMostRecentNote (notes) {
 }
 
 export function getSelectedNote (notes) {
-  if (!notes) {
-    return {}
-  }
+  if (!notes) return {}
 
   return notes.find((note) => note.selected) || {}
 }

@@ -18,8 +18,10 @@ describe('containers > NoteContainer', () => {
 
     expect(dispatch.called).to.be.false
     expect(dispatchProps).to.have.all.keys(
-      'saveNote',
       'selectNote',
+      'newNote',
+      'saveNote',
+      'deleteNote',
       'toggleMarkdownView'
     )
 

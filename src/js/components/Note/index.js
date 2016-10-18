@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import RenderMarkdown from 'instances/renderer'
 import SidebarContainer from 'containers/SidebarContainer'
-import MarkdownToggle from 'components/MarkdownToggle'
 import NoteTitle from 'components/NoteTitle'
 import NoteBody from 'components/NoteBody'
 import NoteBodyHtml from 'components/NoteBodyHtml'
@@ -21,7 +20,10 @@ class Note extends Component {
   static propTypes = {
     note: PropTypes.object.isRequired,
     showMarkdown: PropTypes.bool.isRequired,
+    selectNote: PropTypes.func.isRequired,
     saveNote: PropTypes.func.isRequired,
+    newNote: PropTypes.func.isRequired,
+    deleteNote: PropTypes.func.isRequired,
     toggleMarkdownView: PropTypes.func.isRequired
   }
 
@@ -52,11 +54,13 @@ class Note extends Component {
   }
 
   render () {
-    const { note, toggleMarkdownView } = this.props
+    const { note, newNote, deleteNote, toggleMarkdownView } = this.props
 
     return (
       <div className={CSS.Note}>
-        <MarkdownToggle onClick={toggleMarkdownView}>Toggle Markdown</MarkdownToggle>
+        <button onClick={toggleMarkdownView}>Toggle Markdown</button>
+        <button onClick={newNote}>New note</button>
+        <button onClick={() => deleteNote(note.id)}>Delete note</button>
         <SidebarContainer />
         <NoteTitle title={note.title} onChange={this.handleTitleChange} />
         {this.renderNoteBody()}

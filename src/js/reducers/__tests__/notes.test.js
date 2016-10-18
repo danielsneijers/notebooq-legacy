@@ -13,16 +13,42 @@ describe('reducers > notes', () => {
     Moment.unix.restore()
   })
 
+  it('returns an action object with the correct payload when selecting a note', () => {
+    const action = {
+      type: 'SELECT_NOTE',
+      payload: 2
+    }
+    const expectedResult = [
+      { ...mockState.notes[0], selected: false },
+      { ...mockState.notes[1], selected: true },
+      { ...mockState.notes[2], selected: false }
+    ]
+
+    expect(notes(mockState.notes, action)).to.deep.equal(expectedResult)
+  })
+
+  it('returns an action object with the correct payload when creating a note', () => {
+    const action = { type: 'NEW_NOTE' }
+    const allNotesDeselected = mockState.notes.map((note) => ({ ...note, selected: false }))
+    const newNote = {
+      id: 4,
+      folder: 'default',
+      selected: true,
+      created_at: Moment().unix(),
+      updated_at: Moment().unix()
+    }
+    const expectedResult = [...allNotesDeselected, newNote]
+
+    expect(notes(mockState.notes, action)).to.deep.equal(expectedResult)
+  })
+
   it('returns an action object with the correct payload when saving a note', () => {
     const action = {
       type: 'SAVE_NOTE',
       payload: mockState.notes[0]
     }
     const expectedResult = [
-      {
-        ...mockState.notes[0],
-        updated_at: Moment().unix()
-      },
+      { ...mockState.notes[0], updated_at: Moment().unix() },
       mockState.notes[1],
       mockState.notes[2]
     ]
@@ -32,22 +58,12 @@ describe('reducers > notes', () => {
 
   it('returns an action object with the correct payload when selecting a note', () => {
     const action = {
-      type: 'SELECT_NOTE',
+      type: 'DELETE_NOTE',
       payload: 2
     }
     const expectedResult = [
-      {
-        ...mockState.notes[0],
-        selected: false
-      },
-      {
-        ...mockState.notes[1],
-        selected: true
-      },
-      {
-        ...mockState.notes[2],
-        selected: false
-      }
+      { ...mockState.notes[0], selected: true },
+      { ...mockState.notes[2], selected: false }
     ]
 
     expect(notes(mockState.notes, action)).to.deep.equal(expectedResult)

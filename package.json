@@ -5,7 +5,10 @@
   "main": "main.js",
   "scripts": {
     "start": "ENV=development concurrently -k 'babel-node server.js' 'electron .'",
-    "test": "BABEL_DISABLE_CACHE=1 NODE_ENV=test NODE_PATH='src/js' istanbul cover --colors  _mocha -- --require './test/setup.js' --compilers js:babel-register --recursive 'src/**/*.test.js'",
+    "lint": "npm run lint:css && npm run lint:js",
+    "lint:js": "eslint ./",
+    "lint:css": "stylelint ./src/**/*.css",
+    "test": "npm run lint && BABEL_DISABLE_CACHE=1 NODE_ENV=test NODE_PATH='src/js' istanbul cover --colors  _mocha -- --require './test/setup.js' --compilers js:babel-register --recursive 'src/**/*.test.js'",
     "test:watch": "BABEL_DISABLE_CACHE=1 NODE_ENV=test NODE_PATH='src/js' mocha 'src/js/**/*.test.js' --recursive --require './test/setup.js' --compilers js:babel-register --watch"
   },
   "keywords": [],
@@ -22,6 +25,7 @@
     "marked": "^0.3.6",
     "moment": "^2.15.1",
     "postcss": "^5.1.1",
+    "postcss-loader": "^1.0.0",
     "react": "^15.3.0",
     "react-autosize-textarea": "^0.3.2",
     "react-dom": "^15.3.0",
@@ -65,6 +69,8 @@
     "redux-logger": "^2.6.1",
     "sinon": "^1.17.5",
     "style-loader": "^0.13.1",
+    "stylelint": "^7.4.2",
+    "stylelint-config-standard": "^13.0.2",
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.12.2",

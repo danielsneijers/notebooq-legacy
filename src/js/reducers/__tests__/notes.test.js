@@ -33,6 +33,8 @@ describe('reducers > notes', () => {
     const newNote = {
       id: 4,
       folder: 'default',
+      title: '',
+      body: '',
       selected: true,
       created_at: Moment().unix(),
       updated_at: Moment().unix()

@@ -9,6 +9,8 @@ export function newEmptyNote (id, folder = 'default') {
   return {
     id,
     folder,
+    title: '',
+    body: '',
     selected: true,
     created_at: timestamp,
     updated_at: timestamp

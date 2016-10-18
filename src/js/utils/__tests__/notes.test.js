@@ -19,6 +19,8 @@ describe('utils > notes', () => {
       const newNote = {
         id: 4,
         folder: 'awesomeFolder',
+        title: '',
+        body: '',
         selected: true,
         created_at: Moment().unix(),
         updated_at: Moment().unix()
@@ -31,6 +33,8 @@ describe('utils > notes', () => {
       const newNote = {
         id: 4,
         folder: 'default',
+        title: '',
+        body: '',
         selected: true,
         created_at: Moment().unix(),
         updated_at: Moment().unix()

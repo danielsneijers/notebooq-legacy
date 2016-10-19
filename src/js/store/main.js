@@ -3,21 +3,19 @@ import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 import { hashHistory } from 'react-router'
 import { routerMiddleware } from 'react-router-redux'
+import { LOCAL_STORAGE_KEY } from 'constants/app'
 import localStorageMiddleware from './localStorageMiddleware'
 import rootReducer from 'reducers'
 
 const router = routerMiddleware(hashHistory)
 const persistence = localStorageMiddleware({
   log: true,
-  key: 'store',
-  wait: 2000
+  key: LOCAL_STORAGE_KEY
 })
 const logger = createLogger({
   duration: true,
   collapsed: true
 })
-
-console.log(localStorageMiddleware)
 
 const enhancer = applyMiddleware(logger, persistence, thunk, router)
 

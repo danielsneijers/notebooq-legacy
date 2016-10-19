@@ -16,17 +16,13 @@ export default function notes (state = [], action) {
 
     case SAVE_NOTE:
       const updatedNote = { ...payload, updated_at: Moment().unix() }
-      const stateWithUpdatedNote = state.map((note) => note.selected ? updatedNote : note)
-      window.localStorage.setItem('notes', JSON.stringify(stateWithUpdatedNote))
-      return stateWithUpdatedNote
+      return state.map((note) => note.selected ? updatedNote : note)
 
     case DELETE_NOTE:
       const newSelectedNote = getMostRecentNote(state, [payload])
-      const stateWithoutDeletedNote = state
+      return state
         .filter((note) => note.id !== payload)
         .map((note) => ({ ...note, selected: note.id === newSelectedNote.id }))
-      window.localStorage.setItem('notes', JSON.stringify(stateWithoutDeletedNote))
-      return stateWithoutDeletedNote
 
     default:
       return state

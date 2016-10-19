@@ -1,7 +1,3 @@
-// require('babel-polyfill')
-// const path = require('path')
-// const SOURCE_PATH = path.resolve('../src/js')
-
 function mockCSSModule (module, path) {
   // old style Proxy, enabled with the --harmony_proxies flag
   // https://developer.mozilla.org/en-US/docs/Archive/Web/Old_Proxy_API

@@ -1,16 +1,25 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import createDebounce from 'redux-debounce'
 import createLogger from 'redux-logger'
 import { hashHistory } from 'react-router'
 import { routerMiddleware } from 'react-router-redux'
+import localStorageMiddleware from './localStorageMiddleware'
 import rootReducer from 'reducers'
 
-const debouncerConfig = { simple: 500 }
-const debouncer = createDebounce(debouncerConfig)
-const logger = createLogger()
 const router = routerMiddleware(hashHistory)
-const enhancer = applyMiddleware(thunk, router, debouncer, logger)
+const persistence = localStorageMiddleware({
+  log: true,
+  key: 'store',
+  wait: 2000
+})
+const logger = createLogger({
+  duration: true,
+  collapsed: true
+})
+
+console.log(localStorageMiddleware)
+
+const enhancer = applyMiddleware(logger, persistence, thunk, router)
 
 export default function mainStore (initialState) {
   const store = createStore(rootReducer, initialState, enhancer)

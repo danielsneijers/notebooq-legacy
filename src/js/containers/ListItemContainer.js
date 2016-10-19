@@ -2,11 +2,11 @@ import { connect } from 'react-redux'
 import { selectNote } from 'actions/note'
 import ListItem from 'components/ListItem'
 
-export const mapStateToProps = (state, ownProps) => {
+export function mapStateToProps (state, ownProps) {
   return {...ownProps}
 }
 
-export const mapDispatchToProps = (dispatch, ownProps) => {
+export function mapDispatchToProps (dispatch, ownProps) {
   return {
     handleClick: () => { dispatch(selectNote(ownProps.note.id)) }
   }

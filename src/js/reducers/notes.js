@@ -10,7 +10,8 @@ export default function notes (state = [], action) {
       return state.map((note) => ({ ...note, selected: note.id === payload }))
 
     case NEW_NOTE:
-      const newNoteId = Math.max(...state.map((note) => note.id)) + 1
+      const highestIdInArray = Math.max(...state.map((note) => note.id))
+      const newNoteId = isFinite(highestIdInArray) ? highestIdInArray + 1 : 1 // TODO add infinity to test
       const allNotesDeselected = state.map((note) => ({ ...note, selected: false }))
       return [...allNotesDeselected, newEmptyNote(newNoteId)]
 

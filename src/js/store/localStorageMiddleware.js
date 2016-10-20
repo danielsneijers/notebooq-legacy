@@ -11,9 +11,11 @@ export default () => {
     timeout = setTimeout(() => {
       const storeState = JSON.stringify(store.getState())
 
+      /* istanbul ignore next: although these can be tested, it f*cks up the logs */
       try {
         window.localStorage.setItem('store', storeState)
-        console.log('%c store saved ', 'background-color:#2ecc71; color: white; font-weight: bold; padding: 4px 0;')
+
+        if (process.env.NODE_ENV === 'development') console.log('%c store saved ', 'background-color:#2ecc71; color: white; font-weight: bold; padding: 4px 0;')
       } catch (err) {
         console.log('%c store save failed ', 'background-color:#e74c3c; color: white; font-weight: bold; padding: 4px 0;')
         console.log('with the following message: ', err)

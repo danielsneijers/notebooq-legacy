@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { spy, stub, useFakeTimers } from 'sinon'
+import { spy, useFakeTimers } from 'sinon'
 import { createStore, applyMiddleware } from 'redux'
 import localStorageMiddleware from 'store/localStorageMiddleware'
 
@@ -57,29 +57,6 @@ describe('store > localStorageMiddleware', () => {
     it(`state will only update once per 300 ms`, () => {
       clock.tick(300)
       expect(store.getState()).to.deep.equal({ increment: 1 })
-    })
-  })
-
-  describe('setting the logging options logs operations', () => {
-    const expectedError = new Error('oops')
-    let save
-
-    beforeEach(() => {
-      spy(console, 'log')
-
-      save = stub(window.localStorage, 'setItem')
-      save.throws(expectedError)
-
-      store.dispatch({ type: 'UPDATE' })
-    })
-
-    afterEach(() => {
-      save.restore()
-    })
-
-    it(`catch error`, () => {
-      clock.tick(300)
-      expect(console.log.calledTwice).to.be.true
     })
   })
 })

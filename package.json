@@ -4,7 +4,7 @@
   "description": "Note taking for developers",
   "main": "main.js",
   "scripts": {
-    "start": "ENV=development concurrently -k 'babel-node server.js' 'electron .'",
+    "start": "NODE_ENV=development concurrently -k 'babel-node server.js' 'electron .'",
     "lint": "npm run lint:css && npm run lint:js",
     "lint:js": "eslint ./",
     "lint:css": "stylelint ./src/**/*.css",

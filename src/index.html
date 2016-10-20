@@ -5,7 +5,7 @@
     <title>Dev Notes</title>
     <script>
       (function() {
-        if (process.env.ENV === 'production') {
+        if (process.env.NODE_ENV === 'production') {
           const link = document.createElement('link');
           link.rel = 'stylesheet';
           link.href = '../dist/style.css';
@@ -19,7 +19,7 @@
     <script>
       (function() {
         const script = document.createElement('script');
-        script.src = process.env.ENV === 'development' ? 'http://localhost:9000/dist/bundle.js' : './dist/bundle.js';
+        script.src = process.env.NODE_ENV === 'development' ? 'http://localhost:9000/dist/bundle.js' : './dist/bundle.js';
         document.write(script.outerHTML);
       }());
     </script>

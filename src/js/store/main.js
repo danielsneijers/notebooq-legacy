@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'development') {
   middleware.unshift(logger)
 }
 
-const enhancer = applyMiddleware(middleware)
+const enhancer = applyMiddleware(...middleware)
 
 export default function mainStore (initialState) {
   const store = createStore(rootReducer, initialState, enhancer)

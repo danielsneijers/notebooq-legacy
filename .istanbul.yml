@@ -8,7 +8,7 @@ instrumentation:
       'js/routes.js',
       '**/*.test.js',
       'js/constants/*.js',
-      'js/store/*.js',
+      'js/store/main.js',
       'js/reducers/index.js'
     ]
     embed-source: false

@@ -60,4 +60,16 @@ describe('components > Note', () => {
     expect(onSaveNote.calledOnce).to.be.true
     expect(onSaveNote.calledWith(expectedArgument)).to.be.true
   })
+
+  it('saves the note when onCopyChange is called', () => {
+    const onDeleteNote = spy()
+    const wrapper = shallow(<Note note={mockNote} deleteNote={onDeleteNote} />)
+
+    expect(onDeleteNote.called).to.be.false
+
+    wrapper.instance().handleDeleteNote(mockNote.id)
+
+    expect(onDeleteNote.calledOnce).to.be.true
+    expect(onDeleteNote.calledWith(mockNote.id)).to.be.true
+  })
 })

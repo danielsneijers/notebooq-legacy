@@ -29,7 +29,8 @@ describe('actions > note', () => {
     it('returns an action object with the correct payload', () => {
       const expectedResult = {
         type: SAVE_NOTE,
-        payload: mockNote
+        payload: mockNote,
+        debounceSync: 2000
       }
 
       expect(saveNote(mockNote)).to.deep.equal(expectedResult)

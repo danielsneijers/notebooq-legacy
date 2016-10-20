@@ -3,7 +3,8 @@ import { SELECT_NOTE, NEW_NOTE, SAVE_NOTE, DELETE_NOTE } from 'constants/actionT
 export function saveNote (note) {
   return {
     type: SAVE_NOTE,
-    payload: note
+    payload: note,
+    debounceSync: 2000
   }
 }
 

@@ -14,6 +14,7 @@ class Note extends Component {
 
     this.handleTitleChange = this.handleTitleChange.bind(this)
     this.handleCopyChange = this.handleCopyChange.bind(this)
+    this.handleDeleteNote = this.handleDeleteNote.bind(this)
     this.renderNoteBody = this.renderNoteBody.bind(this)
   }
 
@@ -45,6 +46,12 @@ class Note extends Component {
     })
   }
 
+  handleDeleteNote () {
+    const { note, deleteNote } = this.props
+
+    deleteNote(note.id)
+  }
+
   renderNoteBody () {
     const { note, showMarkdown } = this.props
 
@@ -54,13 +61,13 @@ class Note extends Component {
   }
 
   render () {
-    const { note, newNote, deleteNote, toggleMarkdownView } = this.props
+    const { note, newNote, toggleMarkdownView } = this.props
 
     return (
       <div className={CSS.Note}>
         <button onClick={toggleMarkdownView}>Toggle Markdown</button>
         <button onClick={newNote}>New note</button>
-        <button onClick={() => deleteNote(note.id)}>Delete note</button>
+        <button onClick={this.handleDeleteNote}>Delete note</button>
         <SidebarContainer />
         <NoteTitle title={note.title} onChange={this.handleTitleChange} />
         {this.renderNoteBody()}

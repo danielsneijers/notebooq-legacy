@@ -3,21 +3,23 @@ import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 import { hashHistory } from 'react-router'
 import { routerMiddleware } from 'react-router-redux'
-import { LOCAL_STORAGE_KEY } from 'constants/app'
 import localStorageMiddleware from './localStorageMiddleware'
 import rootReducer from 'reducers'
 
 const router = routerMiddleware(hashHistory)
-const persistence = localStorageMiddleware({
-  log: true,
-  key: LOCAL_STORAGE_KEY
-})
+const persistence = localStorageMiddleware()
 const logger = createLogger({
   duration: true,
   collapsed: true
 })
 
-const enhancer = applyMiddleware(logger, persistence, thunk, router)
+let middleware = [persistence, thunk, router]
+
+if (process.env.NODE_ENV === 'development') {
+  middleware.unshift(logger)
+}
+
+const enhancer = applyMiddleware(middleware)
 
 export default function mainStore (initialState) {
   const store = createStore(rootReducer, initialState, enhancer)

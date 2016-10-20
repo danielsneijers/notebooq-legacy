@@ -1,4 +1,4 @@
-export default ({ log = false, key = 'redux-store' }) => {
+export default () => {
   let timeout
 
   const middleware = store => next => action => {
@@ -12,8 +12,8 @@ export default ({ log = false, key = 'redux-store' }) => {
       const storeState = JSON.stringify(store.getState())
 
       try {
-        window.localStorage.setItem(key, storeState)
-        if (log) console.log('%c store saved ', 'background-color:#2ecc71; color: white; font-weight: bold; padding: 4px 0;')
+        window.localStorage.setItem('store', storeState)
+        console.log('%c store saved ', 'background-color:#2ecc71; color: white; font-weight: bold; padding: 4px 0;')
       } catch (err) {
         console.log('%c store save failed ', 'background-color:#e74c3c; color: white; font-weight: bold; padding: 4px 0;')
         console.log('with the following message: ', err)

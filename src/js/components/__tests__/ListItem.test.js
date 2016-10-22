@@ -3,6 +3,7 @@ import { expect } from 'chai'
 import { shallow } from 'enzyme'
 import { spy } from 'sinon'
 import { mockNote } from 'test/fixtures'
+import { newEmptyNote } from 'utils/notes'
 import ListItem from '../ListItem'
 import CSS from '../ListItem/ListItem.css'
 
@@ -16,6 +17,18 @@ describe('components > ListItem', () => {
     expect(wrapper.type()).to.equal('li')
     expect(wrapper.hasClass(CSS.ListItem)).to.be.true
     expect(wrapper.text()).to.equal(mockNote.title)
+  })
+
+  it('renders a list item with a placeholder title if the note.title is empty', () => {
+    const handleClick = spy()
+    const emptyNote = newEmptyNote(1)
+    const wrapper = shallow(
+      <ListItem note={emptyNote} handleClick={handleClick} />
+    )
+
+    expect(wrapper.type()).to.equal('li')
+    expect(wrapper.hasClass(CSS.ListItem)).to.be.true
+    expect(wrapper.text()).to.equal('Untitled note...')
   })
 
   it('calls handleClick when clicked', () => {

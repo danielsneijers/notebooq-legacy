@@ -2,6 +2,7 @@
   "name": "notebouque",
   "version": "0.1.0",
   "description": "Note taking for developers",
+  "author": "Daniel Sneijers <daniel@moeilijk.vet> (http://danielsneijers.com/)",
   "main": "main.js",
   "scripts": {
     "start": "NODE_ENV=development concurrently -k 'babel-node server.js' 'electron .'",

@@ -18,7 +18,7 @@ export function newEmptyNote (id, folder = 'default') {
 }
 
 export function getMostRecentNote (notes, excludeNoteIds = []) {
-  if (!notes) return {}
+  if (!notes || !notes.length) return {}
 
   const mostRecentNote = notes.reduce((prev, curr) => {
     return excludeNoteIds.includes(curr.id) || (prev.updated_at > curr.updated_at)
@@ -30,7 +30,13 @@ export function getMostRecentNote (notes, excludeNoteIds = []) {
 }
 
 export function getSelectedNote (notes) {
-  if (!notes) return {}
+  if (!notes || !notes.length) return {}
 
   return notes.find((note) => note.selected) || {}
+}
+
+export function getHighestNoteId (notes) {
+  if (!notes || !notes.length) return 0
+
+  return Math.max(...notes.map((note) => note.id))
 }

@@ -16,6 +16,8 @@ class Note extends Component {
     this.handleCopyChange = this.handleCopyChange.bind(this)
     this.handleDeleteNote = this.handleDeleteNote.bind(this)
     this.renderNoteBody = this.renderNoteBody.bind(this)
+
+    this.state = { focusTitle: false }
   }
 
   static propTypes = {
@@ -30,6 +32,12 @@ class Note extends Component {
 
   static defaultProps = {
     showMarkdown: true
+  }
+
+  componentWillReceiveProps (nextProps) {
+    const hasTitle = !!nextProps.note.title
+
+    this.setState({ focusTitle: !hasTitle })
   }
 
   handleTitleChange (event) {
@@ -69,7 +77,11 @@ class Note extends Component {
         <button onClick={newNote}>New note</button>
         <button onClick={this.handleDeleteNote}>Delete note</button>
         <SidebarContainer />
-        <NoteTitle title={note.title} onChange={this.handleTitleChange} />
+        <NoteTitle
+          title={note.title}
+          onChange={this.handleTitleChange}
+          autoFocus={this.state.focusTitle}
+        />
         {this.renderNoteBody()}
       </div>
     )

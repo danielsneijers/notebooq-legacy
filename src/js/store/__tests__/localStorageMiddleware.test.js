@@ -59,4 +59,26 @@ describe('store > localStorageMiddleware', () => {
       expect(store.getState()).to.deep.equal({ increment: 1 })
     })
   })
+
+  describe('debounced action is fired without a wait', () => {
+    beforeEach(() => {
+      const action = {
+        type: 'UPDATE'
+      }
+
+      store.dispatch(action)
+    })
+
+    it('clearTimeout is called', () => {
+      expect(global.clearTimeout.calledOnce).to.be.true
+    })
+
+    it('dispatch is called', () => {
+      expect(store.dispatch.calledOnce).to.be.true
+    })
+
+    it(`state will update immediatly`, () => {
+      expect(store.getState()).to.deep.equal({ increment: 1 })
+    })
+  })
 })

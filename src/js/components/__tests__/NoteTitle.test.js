@@ -1,12 +1,18 @@
 import React from 'react'
 import { expect } from 'chai'
-import { shallow } from 'enzyme'
-import { spy } from 'sinon'
+import { shallow, mount } from 'enzyme'
+import { spy, useFakeTimers } from 'sinon'
 import { mockNote } from 'test/fixtures'
 import NoteTitle from '../NoteTitle'
 import CSS from '../NoteTitle/NoteTitle.css'
 
 describe('components > NoteTitle', () => {
+  let clock
+
+  beforeEach(() => {
+    clock = useFakeTimers()
+  })
+
   it('renders an empty input when no title is passed', () => {
     const wrapper = shallow(<NoteTitle />)
 
@@ -30,5 +36,47 @@ describe('components > NoteTitle', () => {
     expect(saveTitle.called).to.be.false
     wrapper.simulate('change')
     expect(saveTitle.calledOnce).to.equal(true)
+  })
+
+  it('will auto focus after 200ms when autofocus prop is true', () => {
+    const wrapper = mount(<NoteTitle />)
+    const input = wrapper.find('input')
+
+    expect(input.node === document.activeElement).to.be.false
+
+    wrapper.instance().componentWillReceiveProps({ autoFocus: true })
+
+    expect(input.node === document.activeElement).to.be.false
+
+    clock.tick(200)
+
+    expect(input.node === document.activeElement).to.be.true
+  })
+
+  it('will not auto focus after 200ms when autofocus prop is false', () => {
+    const wrapper = mount(<NoteTitle />)
+    const input = wrapper.find('input')
+
+    expect(input.node === document.activeElement).to.be.false
+
+    wrapper.instance().componentWillReceiveProps({ autoFocus: false })
+
+    expect(input.node === document.activeElement).to.be.false
+
+    clock.tick(200)
+
+    expect(input.node === document.activeElement).to.be.false
+  })
+
+  it('will clear the timeout when its unmounted', () => {
+    spy(global, 'clearTimeout')
+
+    const wrapper = mount(<NoteTitle />)
+
+    wrapper.instance()._focusTimeout = spy()
+
+    wrapper.unmount()
+
+    expect(global.clearTimeout.calledOnce).to.be.true
   })
 })

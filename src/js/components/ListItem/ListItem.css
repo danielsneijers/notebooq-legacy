@@ -4,3 +4,7 @@
   cursor: pointer;
   font-weight: normal;
 }
+
+.Faded {
+  color: #ccc;
+}

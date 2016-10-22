@@ -1,6 +1,6 @@
 import Moment from 'moment'
 import { SELECT_NOTE, NEW_NOTE, SAVE_NOTE, DELETE_NOTE } from 'constants/actionTypes'
-import { newEmptyNote, getMostRecentNote } from 'utils/notes'
+import { newEmptyNote, getMostRecentNote, getHighestNoteId } from 'utils/notes'
 
 export default function notes (state = [], action) {
   const { type, payload } = action
@@ -10,8 +10,7 @@ export default function notes (state = [], action) {
       return state.map((note) => ({ ...note, selected: note.id === payload }))
 
     case NEW_NOTE:
-      const highestIdInArray = Math.max(...state.map((note) => note.id))
-      const newNoteId = isFinite(highestIdInArray) ? highestIdInArray + 1 : 1 // TODO add infinity to test
+      const newNoteId = getHighestNoteId(state) + 1
       const allNotesDeselected = state.map((note) => ({ ...note, selected: false }))
       return [...allNotesDeselected, newEmptyNote(newNoteId)]
 

@@ -2,7 +2,7 @@ import Moment from 'moment'
 import { expect } from 'chai'
 import { stub } from 'sinon'
 import { NoteIdFormatException } from 'utils/errors'
-import { newEmptyNote, getMostRecentNote, getSelectedNote } from '../notes'
+import { newEmptyNote, getMostRecentNote, getSelectedNote, getHighestNoteId } from '../notes'
 import { mockNotesList, mockNote } from 'test/fixtures'
 
 describe('utils > notes', () => {
@@ -78,6 +78,16 @@ describe('utils > notes', () => {
 
     it('returns an empty object when there are no notes', () => {
       expect(getSelectedNote(null)).to.deep.equal({})
+    })
+  })
+
+  describe('getHighestNoteId', () => {
+    it('returns the highest id in a list of notes', () => {
+      expect(getHighestNoteId(mockNotesList)).to.equal(3)
+    })
+
+    it('returns 0 when no notes are found', () => {
+      expect(getHighestNoteId([])).to.equal(0)
     })
   })
 })

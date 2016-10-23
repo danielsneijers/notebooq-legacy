@@ -4,8 +4,8 @@ import CSS from './ListItem.css'
 
 const ListItem = ({ note, handleClick }) => {
   const title = note.title || 'Untitled note...'
-  const styles = classNames([CSS.ListItem], {
-    [CSS.Faded]: !note.title
+  const styles = classNames([CSS.listItem], {
+    [CSS.faded]: !note.title
   })
 
   return <li className={styles} onClick={handleClick}>{title}</li>

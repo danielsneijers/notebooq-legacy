@@ -7,7 +7,7 @@ const List = ({ notes }) => {
     .map((note) => <ListItemContainer key={note.id} note={note} />)
 
   return (
-    <ul className={CSS.List}>
+    <ul className={CSS.list}>
       {renderedNotes}
     </ul>
   )

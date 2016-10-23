@@ -1,0 +1,80 @@
+@import '../../../css/Sizes.css';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: var(--double-line-height);
+  margin-top: var(--base-line-height);
+  max-width: var(--max-text-column-width);
+}
+
+h5,
+h6 {
+  line-height: var(--double-line-height);
+  margin-top: 0;
+}
+
+h1 {
+  font-size: var(--h1-size);
+  font-weight: 600;
+  margin-bottom: var(--half-line-height);
+}
+
+h2 {
+  font-size: var(--h2-size);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: var(--h3-size);
+  font-weight: 600;
+  border-bottom: 1px solid #CCC;
+  margin-bottom: .45rem;
+  line-height: 2.5rem;
+}
+
+h4 {
+  font-size: var(--h4-size);
+  font-weight: 600;
+}
+
+h5 {
+  display: inline-block;
+  position: relative;
+  font-weight: 600;
+
+  &:before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 1.5em;
+    left: .1em;
+    display: block;
+    width: calc(100% + .1em);
+    height: 1em;
+    background-color: yellow;
+  }
+}
+
+h6 {
+  font-weight: 600;
+}
+
+p {
+  font-size: 1rem;
+  line-height: var(--base-line-height);
+  -webkit-font-smoothing: subpixel-antialiased;
+  margin-bottom: var(--base-line-height);
+  max-width: var(--max-text-column-width);
+}
+
+strong {
+  font-weight: 600;
+}
+
+em {
+  font-style: italic;
+}

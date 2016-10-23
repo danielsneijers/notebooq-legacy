@@ -7,7 +7,7 @@ const NoteBody = ({ body, ...rest }) => {
   return <TextareaAutosize
     value={body}
     name="Copy"
-    className={CSS.Textarea}
+    className={CSS.textarea}
     {...rest} />
 }
 

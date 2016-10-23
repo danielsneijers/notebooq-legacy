@@ -14,7 +14,7 @@ describe('components > Note', () => {
     const onSaveNote = spy()
     const wrapper = shallow(<Note note={mockNote} saveNote={onSaveNote} />)
 
-    expect(wrapper.hasClass(CSS.Note)).to.be.true
+    expect(wrapper.hasClass(CSS.note)).to.be.true
     expect(wrapper.containsAllMatchingElements([
       <NoteTitle title={mockNote.title} />,
       <NoteBody body={mockNote.body} />

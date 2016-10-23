@@ -20,7 +20,7 @@ describe('components > NoteTitle', () => {
     expect(wrapper.text()).to.equal('')
     expect(wrapper.prop('value')).to.equal(undefined)
     expect(wrapper.prop('placeholder')).to.equal('Untitled note...')
-    expect(wrapper.hasClass(CSS.NoteTitle)).to.be.true
+    expect(wrapper.hasClass(CSS.noteTitle)).to.be.true
   })
 
   it('renders a prefilled input when copy prop is passed', () => {

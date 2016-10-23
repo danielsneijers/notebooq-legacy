@@ -1,10 +1,10 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
-import AppContainer from 'containers/AppContainer'
+import AppWrapper from 'components/AppWrapper'
 import NoteContainer from 'containers/NoteContainer'
 
 export default (
-  <Route path="/" component={AppContainer}>
+  <Route path="/" component={AppWrapper}>
     <IndexRoute component={NoteContainer} />
   </Route>
 )

@@ -1,6 +1,6 @@
 @import '../../../css/Sizes.css';
 
-.Note {
+.note {
   position: relative;
   width: calc(100% - var(--notes-list-width));
   height: calc(100vh - var(--title-bar-height));

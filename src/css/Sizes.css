@@ -1,4 +1,18 @@
 :root {
   --title-bar-height: 20px;
   --notes-list-width: 15rem;
+
+  /* line heights */
+  --half-line-height: .75rem;
+  --base-line-height: 1.5rem;
+  --double-line-height: 3rem;
+
+  /* font sizes */
+  --h1-size: 2.441rem;
+  --h2-size: 1.953rem;
+  --h3-size: 1.563rem;
+  --h4-size: 1.25;
+
+  /* text properties */
+  --max-text-column-width: 38rem;
 }

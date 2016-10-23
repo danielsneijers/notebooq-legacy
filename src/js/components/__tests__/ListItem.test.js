@@ -15,7 +15,7 @@ describe('components > ListItem', () => {
     )
 
     expect(wrapper.type()).to.equal('li')
-    expect(wrapper.hasClass(CSS.ListItem)).to.be.true
+    expect(wrapper.hasClass(CSS.listItem)).to.be.true
     expect(wrapper.text()).to.equal(mockNote.title)
   })
 
@@ -27,7 +27,7 @@ describe('components > ListItem', () => {
     )
 
     expect(wrapper.type()).to.equal('li')
-    expect(wrapper.hasClass(CSS.ListItem)).to.be.true
+    expect(wrapper.hasClass(CSS.listItem)).to.be.true
     expect(wrapper.text()).to.equal('Untitled note...')
   })
 

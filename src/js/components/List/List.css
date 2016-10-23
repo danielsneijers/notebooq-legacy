@@ -1,12 +1,11 @@
 @import '../../../css/Sizes.css';
 
-.List {
-  font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+.list {
   position: fixed;
   left: 0;
   top: 0;
   height: 100vh;
-  padding-top: calc(var(--title-bar-height) * 2);
-  background-color: #fafafa;
+  padding-top: calc(2 * var(--title-bar-height));
+  background-color: #FAFAFA;
   width: var(--notes-list-width);
 }

@@ -31,7 +31,7 @@ class NoteTitle extends Component {
         name="Title"
         value={title}
         placeholder="Untitled note..."
-        className={CSS.NoteTitle}
+        className={CSS.noteTitle}
         {...rest}
       />
     )

@@ -13,7 +13,7 @@ describe('components > NoteBody', () => {
 
     expect(wrapper.type()).to.equal(TextareaAutosize)
     expect(wrapper.prop('value')).to.equal(undefined)
-    expect(wrapper.hasClass(CSS.Textarea)).to.be.true
+    expect(wrapper.hasClass(CSS.textarea)).to.be.true
   })
 
   it('renders a prefilled textarea when copy prop is passed', () => {

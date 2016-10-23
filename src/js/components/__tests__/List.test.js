@@ -11,7 +11,7 @@ describe('components > List', () => {
     const wrapper = shallow(<List notes={mockNotesList} />)
 
     expect(wrapper.type()).to.equal('ul')
-    expect(wrapper.hasClass(CSS.List)).to.be.true
+    expect(wrapper.hasClass(CSS.list)).to.be.true
     expect(wrapper.props().children.length).to.equal(mockNotesList.length)
     expect(wrapper.containsMatchingElement(<ListItemContainer />)).to.be.true
   })

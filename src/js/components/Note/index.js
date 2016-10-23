@@ -72,7 +72,7 @@ class Note extends Component {
     const { note, newNote, toggleMarkdownView } = this.props
 
     return (
-      <div className={CSS.Note}>
+      <div className={CSS.note}>
         <button onClick={toggleMarkdownView}>Toggle Markdown</button>
         <button onClick={newNote}>New note</button>
         <button onClick={this.handleDeleteNote}>Delete note</button>

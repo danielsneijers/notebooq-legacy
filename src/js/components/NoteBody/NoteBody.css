@@ -1,9 +1,9 @@
-.Textarea {
+.textarea {
   font-family: "Office Code Pro";
   font-size: 1em;
   line-height: 1.5em;
   border: none;
-  position: relative;;
+  position: relative;
   overflow: hidden;
   outline: none;
   box-shadow: none;

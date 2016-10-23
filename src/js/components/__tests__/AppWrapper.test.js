@@ -1,14 +1,14 @@
 import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
-import App from '../AppContainer'
+import AppWrapper from '../AppWrapper'
 
-describe('containers > AppContainer', () => {
+describe('components > AppWrapper', () => {
   it('renders its children', () => {
     const wrapper = shallow(
-      <App>
+      <AppWrapper>
         <h1>This is the root component</h1>
-      </App>
+      </AppWrapper>
     )
 
     expect(wrapper.contains(<h1>This is the root component</h1>)).to.equal(true)

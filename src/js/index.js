@@ -6,7 +6,6 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import { newEmptyNote } from 'utils/notes'
 import mainStore from 'store/main'
 import routes from './routes'
-import '../app.global.css'
 
 const initialState = JSON.parse(localStorage.getItem('store'))
 const emptyState = {

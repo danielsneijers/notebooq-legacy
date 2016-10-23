@@ -1,13 +1,13 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { getSelectedNote } from 'utils/notes'
+import { getSelectedNote } from 'selectors/noteSelectors'
 import * as NoteActions from 'actions/note'
 import * as ViewActions from 'actions/view'
 import Note from 'components/Note'
 
 export function mapStateToProps (state) {
   return {
-    note: getSelectedNote(state.notes),
+    note: getSelectedNote(state),
     showMarkdown: state.view.markdown
   }
 }

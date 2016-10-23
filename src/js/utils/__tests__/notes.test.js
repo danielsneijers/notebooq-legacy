@@ -2,8 +2,8 @@ import Moment from 'moment'
 import { expect } from 'chai'
 import { stub } from 'sinon'
 import { NoteIdFormatException } from 'utils/errors'
-import { newEmptyNote, getMostRecentNote, getSelectedNote, getHighestNoteId } from '../notes'
-import { mockNotesList, mockNote } from 'test/fixtures'
+import { newEmptyNote, getMostRecentNote, getHighestNoteId } from '../notes'
+import { mockNotesList } from 'test/fixtures'
 
 describe('utils > notes', () => {
   describe('newEmptyNote', () => {
@@ -62,22 +62,6 @@ describe('utils > notes', () => {
 
     it('returns an empty object when there are no notes', () => {
       expect(getMostRecentNote(null)).to.deep.equal({})
-    })
-  })
-
-  describe('getSelectedNote', () => {
-    it('returns the selected note when there is one', () => {
-      expect(getSelectedNote(mockNotesList)).to.deep.equal(mockNote)
-    })
-
-    it('returns an empty object when there are no selected notes', () => {
-      const noSelectedNotes = mockNotesList.map((note) => ({ ...note, selected: false }))
-
-      expect(getSelectedNote(noSelectedNotes)).to.deep.equal({})
-    })
-
-    it('returns an empty object when there are no notes', () => {
-      expect(getSelectedNote(null)).to.deep.equal({})
     })
   })
 

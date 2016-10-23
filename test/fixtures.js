@@ -9,15 +9,7 @@ export const mockNote = {
 }
 
 export const mockNotesList = [
-  {
-    id: 1,
-    folder: 'default',
-    title: 'Mock note',
-    body: 'Some nice copy',
-    selected: true,
-    created_at: 1476473779,
-    updated_at: 1476473779
-  },
+  mockNote,
   {
     id: 2,
     folder: 'default',

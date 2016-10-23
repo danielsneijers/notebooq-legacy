@@ -29,12 +29,6 @@ export function getMostRecentNote (notes, excludeNoteIds = []) {
   return mostRecentNote
 }
 
-export function getSelectedNote (notes) {
-  if (!notes || !notes.length) return {}
-
-  return notes.find((note) => note.selected) || {}
-}
-
 export function getHighestNoteId (notes) {
   if (!notes || !notes.length) return 0
 

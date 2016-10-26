@@ -1,10 +1,46 @@
 .listItem {
-  border-bottom: 1px solid #CCC;
+  position: relative;
+  border-top: 1px solid #FAFAFA;
+  border-left: 0 solid #FEDB31;
   padding: 1rem;
+  font-size: .8rem;
   cursor: pointer;
   font-weight: normal;
 }
 
 .faded {
   color: #CCC;
+}
+
+.selected {
+  background-color: white;
+  border-left-width: 4px;
+  padding-left: calc(1rem - 4px);
+}
+
+.title {
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80%;
+  white-space: nowrap;
+}
+
+.date {
+  font-size: .64rem;
+  line-height: 1.86rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #1DCAFF;
+}
+
+.description {
+  display: inline-block;
+  font-size: .8rem;
+  line-height: 1.5em;
+  font-weight: normal;
+  font-style: normal;
+  color: #AAA;
 }

@@ -40,6 +40,28 @@ http://zenorocha.mit-license.org
 @author Zeno Rocha <hi@zenorocha.com>
 
 */
+p code {
+  background-color: #17252C;
+  border-radius: 3px;
+  font-family: "Fira Code";
+  color: white;
+  padding: .2rem .5rem;
+  font-size: 14px;
+  line-height: 1.5em;
+  font-weight: 400;
+}
+
+pre {
+  background-color: #17252C;
+  border-radius: 3px;
+  font-family: "Fira Code";
+  color: white;
+  padding: 1rem;
+  font-size: 14px;
+  line-height: 1.5em;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
 
 :global .hljs {
   display: block;

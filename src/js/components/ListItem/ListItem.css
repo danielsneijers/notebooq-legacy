@@ -1,10 +1,51 @@
 .listItem {
-  border-bottom: 1px solid #CCC;
-  padding: 1rem;
+  position: relative;
+  border-top: 1px solid #FAFAFA;
+  border-left: 0 solid #FEDB31;
+  padding: 1rem 1rem .8rem;
+  font-size: .8rem;
   cursor: pointer;
   font-weight: normal;
+  transition: background-color .2s;
 }
 
 .faded {
   color: #CCC;
+}
+
+.selected {
+  background-color: white;
+  border-left-width: 4px;
+  padding-left: calc(1rem - 4px);
+}
+
+.title {
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  line-height: 1.2em;
+  margin: 0;
+  text-overflow: ellipsis;
+  max-width: 77.5%;
+  white-space: nowrap;
+}
+
+.date {
+  font-size: .64rem;
+  line-height: 1;
+  padding-top: .56em;
+  position: absolute;
+  top: .9rem;
+  right: 1rem;
+  color: #1DCAFF;
+}
+
+.description {
+  display: inline-block;
+  font-size: .8rem;
+  line-height: 1.5em;
+  font-weight: normal;
+  font-style: normal;
+  margin-top: -.35rem;
+  color: #AAA;
 }

@@ -13,10 +13,11 @@ describe('components > ListItem', () => {
     const wrapper = shallow(
       <ListItem note={mockNote} handleClick={handleClick} />
     )
+    const title = wrapper.find('strong')
 
     expect(wrapper.type()).to.equal('li')
     expect(wrapper.hasClass(CSS.listItem)).to.be.true
-    expect(wrapper.text()).to.equal(mockNote.title)
+    expect(title.text()).to.equal(mockNote.title)
   })
 
   it('renders a list item with a placeholder title if the note.title is empty', () => {
@@ -25,10 +26,11 @@ describe('components > ListItem', () => {
     const wrapper = shallow(
       <ListItem note={emptyNote} handleClick={handleClick} />
     )
+    const title = wrapper.find('strong')
 
     expect(wrapper.type()).to.equal('li')
     expect(wrapper.hasClass(CSS.listItem)).to.be.true
-    expect(wrapper.text()).to.equal('Untitled note...')
+    expect(title.text()).to.equal('Untitled note...')
   })
 
   it('calls handleClick when clicked', () => {

@@ -19,18 +19,18 @@ h6 {
 
 h1 {
   font-size: var(--h1-size);
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: var(--half-line-height);
 }
 
 h2 {
   font-size: var(--h2-size);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 h3 {
   font-size: var(--h3-size);
-  font-weight: 600;
+  font-weight: 500;
   border-bottom: 1px solid #CCC;
   margin-bottom: .45rem;
   line-height: 2.5rem;
@@ -61,6 +61,7 @@ h5 {
 
 h6 {
   font-weight: 600;
+  color: #999;
 }
 
 p {

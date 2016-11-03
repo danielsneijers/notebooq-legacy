@@ -26,6 +26,26 @@ body {
   font-family: "Avenir Next", sans-serif;
 }
 
+/* Tables */
+table {
+  margin: 1em 0;
+}
+thead {
+  font-weight: bold;
+  text-align: left;
+  background-color: #FAFAFA;
+  border-bottom: 1px solid #CCC;
+}
+
+tr:nth-of-type(2) {
+  background-color: #FAFAFA;
+}
+
+td,
+th {
+  padding: .2em 1em;
+}
+
 /*
 Dracula Theme v1.2.0
 

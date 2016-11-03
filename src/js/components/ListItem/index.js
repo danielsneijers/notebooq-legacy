@@ -13,6 +13,8 @@ const ListItem = ({ note, handleClick }) => {
   const relativeDate = Moment(note.updated_at * 1000).fromNow()
     .replace('a few seconds ago', 'now')
     .replace('a minute ago', 'just now')
+    .replace('an hour', '1h')
+    .replace('a day', '1d')
     .replace(' minutes', 'm')
     .replace(' seconds', 's')
     .replace(' hours', 'h')

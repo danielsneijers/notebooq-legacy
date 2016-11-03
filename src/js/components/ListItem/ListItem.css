@@ -2,10 +2,11 @@
   position: relative;
   border-top: 1px solid #FAFAFA;
   border-left: 0 solid #FEDB31;
-  padding: 1rem;
+  padding: 1rem 1rem .8rem;
   font-size: .8rem;
   cursor: pointer;
   font-weight: normal;
+  transition: background-color .2s;
 }
 
 .faded {
@@ -22,16 +23,19 @@
   display: inline-block;
   width: 100%;
   overflow: hidden;
+  line-height: 1.2em;
+  margin: 0;
   text-overflow: ellipsis;
-  max-width: 80%;
+  max-width: 77.5%;
   white-space: nowrap;
 }
 
 .date {
   font-size: .64rem;
-  line-height: 1.86rem;
+  line-height: 1;
+  padding-top: .56em;
   position: absolute;
-  top: 1rem;
+  top: .9rem;
   right: 1rem;
   color: #1DCAFF;
 }
@@ -42,5 +46,6 @@
   line-height: 1.5em;
   font-weight: normal;
   font-style: normal;
+  margin-top: -.35rem;
   color: #AAA;
 }

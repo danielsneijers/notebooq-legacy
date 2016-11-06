@@ -14,7 +14,7 @@ function createWindow () {
   })
 
   win.loadURL(`file://${__dirname}/src/index.html`)
-  win.webContents.openDevTools()
+  // win.webContents.openDevTools()
 
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -26,7 +26,7 @@ function createWindow () {
 }
 
 app.on('ready', createWindow)
-app.on('activate', createWindow)
+
 app.on('window-all-closed', () => {
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q

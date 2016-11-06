@@ -1,8 +1,8 @@
 {
-  "name": "notebouque",
+  "name": "Notebooq",
   "version": "0.1.0",
-  "description": "Note taking for developers",
-  "author": "Daniel Sneijers",
+  "description": "Markdown note taking for developers",
+  "author": "Daniel Sneijers <daniel@moeilijk.vet> (http://danielsneijers.com)",
   "main": "main.js",
   "scripts": {
     "start": "NODE_ENV=development concurrently -k 'babel-node server.js' 'electron .'",
@@ -10,13 +10,47 @@
     "lint:js": "eslint ./",
     "lint:css": "stylelint './src/**/*.css'",
     "test": "npm run lint && BABEL_DISABLE_CACHE=1 NODE_ENV=test NODE_PATH='src/js' istanbul cover --colors  _mocha -- --require './test/setup.js' --compilers js:babel-register --recursive 'src/**/*.test.js'",
-    "test:watch": "BABEL_DISABLE_CACHE=1 NODE_ENV=test NODE_PATH='src/js' mocha 'src/js/**/*.test.js' --recursive --require './test/setup.js' --compilers js:babel-register --watch"
+    "test:watch": "BABEL_DISABLE_CACHE=1 NODE_ENV=test NODE_PATH='src/js' mocha 'src/js/**/*.test.js' --recursive --require './test/setup.js' --compilers js:babel-register --watch",
+    "build": "webpack --config webpack.config.production.js",
+    "package": "npm run build && build --publish never"
   },
   "keywords": [],
   "license": "ISC",
   "moduleRoots": [
     "src/js"
   ],
+  "build": {
+    "appId": "com.danielsneijers.Noteboque",
+    "category": "public.app-category.tools",
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "AppImage"
+      ]
+    }
+  },
+  "directories": {
+    "buildResources": "resources",
+    "output": "release"
+  },
   "dependencies": {
     "classnames": "^2.2.5",
     "highlight.js": "^9.7.0",
@@ -48,6 +82,7 @@
     "concurrently": "^3.1.0",
     "css-loader": "^0.25.0",
     "electron": "^1.4.4",
+    "electron-builder": "^7.23.2",
     "enzyme": "^2.4.1",
     "eslint": "^3.2.0",
     "eslint-config-standard": "^6.2.1",
@@ -57,6 +92,7 @@
     "eslint-plugin-react": "^6.4.1",
     "eslint-plugin-standard": "^2.0.0",
     "express": "^4.14.0",
+    "html-webpack-plugin": "^2.24.1",
     "istanbul": "^1.1.0-alpha.1",
     "jsdom": "^9.8.3",
     "mocha": "^3.0.0",
